@@ -1,4 +1,4 @@
-﻿namespace Incidences.Models.Employee
+﻿namespace curriculum.Models.Employee
 {
     public class CredentialsDto
     {

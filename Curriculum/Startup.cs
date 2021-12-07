@@ -1,6 +1,5 @@
+using curriculum.Business;
 using curriculum.Data;
-using Incidences.Business;
-using Incidences.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -22,22 +21,10 @@ namespace Incidences
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            //services.AddTransient<IIncidenceBz, IncidenceBz>();
-            //services.AddTransient<IReportBz, ReportBz>();
-            //services.AddTransient<IPieceBz, PieceBz>();
-            //services.AddTransient<IEmployeeBz, EmployeeBz>();
-            //services.AddTransient<ICredentialsBz, CredentialsBz>();
-            //services.AddTransient<IEmployeeRangeBz, EmployeeRangeBz>();
-            /*services.AddTransient<ICredentialsData, CredentialsData>();
-            services.AddTransient<IIncidenceData, IncidenceData>();
-            services.AddTransient<IEmployeeData, EmployeeData>();
-            services.AddTransient<IEmployeeRangeData, EmployeeRangeData>();
-            services.AddTransient<INoteData, NoteData>();
-            services.AddTransient<IPieceData, PieceData>();
-            services.AddTransient<IPieceTypeData, PieceTypeData>();
-            services.AddTransient<IReportData, ReportData>();*/
-            //services.AddTransient<IPieceTypeBz, PieceTypeBz>();
-            //services.AddTransient<INoteBz, NoteBz>();
+            services.AddTransient<ICurriculumBz, CurriculumBz>();
+            services.AddTransient<IUserBz, UserBz>();
+            services.AddTransient<ICurriculumData, CurriculumData>();
+            services.AddTransient<IUserData, UserData>();
             services.AddDbContext<CurriculumContext>(options =>
             options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection")
