@@ -1,4 +1,4 @@
-﻿using Incidences.Data.Models;
+﻿using curriculum.Data;
 using Incidences.Models.Incidence;
 using System;
 using System.Collections.Generic;
@@ -7,16 +7,16 @@ using System.Linq;
 
 namespace Incidences.Data
 {
-    public class PieceTypeData : IPieceTypeData
+    public class PieceTypeData //: IPieceTypeData
     {
-        private readonly IncidenceContext _context;
+        private readonly CurriculumContext _context;
 
-        public PieceTypeData(IncidenceContext context)
+        public PieceTypeData(CurriculumContext context)
         {
             _context = context;
         }
 
-        public IList<PieceType> SelectPieceType()
+        /*public IList<PieceType> SelectPieceType()
         {
             try
             {
@@ -59,6 +59,6 @@ namespace Incidences.Data
             {
                 throw new Exception(e.Message);
             }
-        }
+        }*/
     }
 }

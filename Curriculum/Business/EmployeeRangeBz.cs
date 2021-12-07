@@ -1,5 +1,4 @@
 ﻿using Incidences.Data;
-using Incidences.Data.Models;
 using Incidences.Models.Employee;
 using System;
 using System.Collections.Generic;

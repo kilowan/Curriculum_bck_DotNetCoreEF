@@ -1,3 +1,4 @@
+using curriculum.Data;
 using Incidences.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,7 +27,7 @@ namespace Incidences
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<IncidenceContext>();
+                    var context = services.GetRequiredService<CurriculumContext>();
                     DbInitializer.Initialize(context);
                 }
                 catch (Exception ex)

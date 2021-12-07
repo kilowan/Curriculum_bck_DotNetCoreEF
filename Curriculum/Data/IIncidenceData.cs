@@ -1,5 +1,4 @@
-﻿using Incidences.Data.Models;
-using Incidences.Models.Incidence;
+﻿using Incidences.Models.Incidence;
 using System.Collections.Generic;
 
 namespace Incidences.Data

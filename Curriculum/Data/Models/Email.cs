@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace curriculum.Data.Models
 {
-    public class Credentials : baseClass
+    public class Email : basebaseClass
     {
-        public string username { get; set; }
-        public string password { get; set; }
+        public string domain { get; set; }
         public int userId { get; set; }
 
-        [ForeignKey(nameof(Credentials.userId))]
+        [ForeignKey(nameof(Email.userId))]
         public User user { get; set; }
     }
 }

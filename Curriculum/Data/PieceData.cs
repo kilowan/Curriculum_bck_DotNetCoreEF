@@ -1,4 +1,4 @@
-﻿using Incidences.Data.Models;
+﻿using curriculum.Data;
 using Incidences.Models.Incidence;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,16 +8,16 @@ using System.Linq;
 
 namespace Incidences.Data
 {
-    public class PieceData : IPieceData
+    public class PieceData //: IPieceData
     {
-        private readonly IncidenceContext _context;
+        private readonly CurriculumContext _context;
 
-        public PieceData(IncidenceContext context)
+        public PieceData(CurriculumContext context)
         {
             _context = context;
         }
 
-        public Piece SelectPieceById(int pieceId)
+        /*public Piece SelectPieceById(int pieceId)
         {
             try
             {
@@ -250,6 +250,6 @@ namespace Incidences.Data
             }
 
             return pieces;
-        }
+        }*/
     }
 }

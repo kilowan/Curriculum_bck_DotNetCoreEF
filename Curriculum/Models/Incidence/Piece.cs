@@ -1,5 +1,4 @@
-﻿using Incidences.Data.Models;
-
+﻿
 namespace Incidences.Models.Incidence
 {
     public class Piece
@@ -74,12 +73,12 @@ namespace Incidences.Models.Incidence
             this.type = type;
             this.deleted = deleted;
         }
-        public Piece(piece_class pc)
+        /*public Piece(piece_class pc)
         {
             this.id = pc.id;
             this.name = pc.name;
             this.type = new PieceType(pc.PieceType);
             this.deleted = pc.deleted;
-        }
+        }*/
     }
 }

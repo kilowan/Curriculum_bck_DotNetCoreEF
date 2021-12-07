@@ -1,22 +1,17 @@
-﻿using Incidences.Data.Models;
-using Incidences.Models.Employee;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
+﻿using curriculum.Data;
 
 namespace Incidences.Data
 {
-    public class EmployeeRangeData : IEmployeeRangeData
+    public class EmployeeRangeData //: IEmployeeRangeData
     {
-        private readonly IncidenceContext _context;
+        private readonly CurriculumContext _context;
 
-        public EmployeeRangeData(IncidenceContext context)
+        public EmployeeRangeData(CurriculumContext context)
         {
             _context = context;
         }
 
-        public IList<TypeRange> SelectRangeList()
+        /*public IList<TypeRange> SelectRangeList()
         {
             try
             {
@@ -57,6 +52,6 @@ namespace Incidences.Data
                 .Where(er => er.name == typeName)
                 .Select(er => er.id)
                 .FirstOrDefault();
-        }
+        }*/
     }
 }

@@ -1,21 +1,21 @@
-﻿using Incidences.Models.Employee;
+﻿using curriculum.Data;
+using Incidences.Models.Employee;
 using System;
 using System.Data;
 using System.Linq;
-using Credentials = Incidences.Data.Models.Credentials;
 
 namespace Incidences.Data
 {
-    public class CredentialsData : ICredentialsData
+    public class CredentialsData //: ICredentialsData
     {
-        private readonly IncidenceContext _context;
+        private readonly CurriculumContext _context;
 
-        public CredentialsData(IncidenceContext context)
+        public CredentialsData(CurriculumContext context)
         {
             this._context = context;
         }
 
-        public Incidences.Models.Employee.Credentials SelectCredentialsById(int id)
+        /*public Incidences.Models.Employee.Credentials SelectCredentialsById(int id)
         {
             try
             {
@@ -179,6 +179,6 @@ namespace Incidences.Data
             _context.Credentialss.Add(cred);
             if(_context.SaveChanges() != 1) throw new Exception("Empleado no insertado");
             return true;
-        }
+        }*/
     }
 }

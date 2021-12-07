@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace curriculum.Data.Models
 {
-    public class Credentials : baseClass
+    public class UserNumber : baseClass
     {
-        public string username { get; set; }
-        public string password { get; set; }
         public int userId { get; set; }
+        public int phoneId { get; set; }
 
-        [ForeignKey(nameof(Credentials.userId))]
+        [ForeignKey(nameof(UserNumber.phoneId))]
+        public PhoneNumber phone { get; set; }
+
+        [ForeignKey(nameof(UserNumber.userId))]
         public User user { get; set; }
     }
 }

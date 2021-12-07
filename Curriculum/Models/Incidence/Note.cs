@@ -1,5 +1,4 @@
-﻿using Incidences.Data.Models;
-using System;
+﻿using System;
 
 namespace Incidences.Models.Incidence
 {
@@ -47,12 +46,12 @@ namespace Incidences.Models.Incidence
         {
 
         }
-        public Note(Notes notes)
+        /*public Note(Notes notes)
         {
             this.noteStr = notes.noteStr;
             this.type = new NoteType(notes.NoteType);
             this.date = notes.date;
-        }
+        }*/
         public Note(string noteStr)
         {
             this.noteStr = noteStr;

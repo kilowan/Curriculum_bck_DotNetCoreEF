@@ -1,4 +1,4 @@
-﻿using Incidences.Data.Models;
+﻿using curriculum.Data;
 using Incidences.Models.Employee;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,18 +8,18 @@ using System.Linq;
 
 namespace Incidences.Data
 {
-    public class EmployeeData : IEmployeeData
+    public class EmployeeData //: IEmployeeData
     {
         private readonly ICredentialsData credentialsData;
-        private readonly IncidenceContext _context;
+        private readonly CurriculumContext _context;
 
-        public EmployeeData(ICredentialsData credentialsData, IncidenceContext context)
+        public EmployeeData(ICredentialsData credentialsData, CurriculumContext context)
         {
             this._context = context;
             this.credentialsData = credentialsData;
         }
 
-        public Employee SelectEmployeeByDni(string dni)
+        /*public Employee SelectEmployeeByDni(string dni)
         {
             try
             {
@@ -173,6 +173,6 @@ namespace Incidences.Data
             else throw new Exception("Empleado no actualizado");
 
             return result;
-        }
+        }*/
     }
 }

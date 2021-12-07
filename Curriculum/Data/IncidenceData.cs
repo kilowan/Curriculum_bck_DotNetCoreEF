@@ -1,4 +1,4 @@
-﻿using Incidences.Data.Models;
+﻿using curriculum.Data;
 using Incidences.Models.Incidence;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,15 +8,15 @@ using System.Linq;
 
 namespace Incidences.Data
 {
-    public class IncidenceData : IIncidenceData
+    public class IncidenceData //: IIncidenceData
     {
-        private readonly IncidenceContext _context;
+        private readonly CurriculumContext _context;
 
-        public IncidenceData(IncidenceContext context)
+        public IncidenceData(CurriculumContext context)
         {
             _context = context;
         }
-        public int Count(int state, int userId) 
+        /*public int Count(int state, int userId) 
         {
             return _context.Incidences
                 .Where(inc => inc.state == state && inc.solverId == userId)
@@ -381,6 +381,6 @@ namespace Incidences.Data
             }
 
             return incidencesOut;
-        }
+        }*/
     }
 }
