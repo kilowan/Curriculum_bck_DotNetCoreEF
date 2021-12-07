@@ -1,3 +1,4 @@
+using curriculum.Data;
 using Incidences.Business;
 using Incidences.Data;
 using Microsoft.AspNetCore.Builder;
@@ -21,23 +22,23 @@ namespace Incidences
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddTransient<IIncidenceBz, IncidenceBz>();
-            services.AddTransient<IReportBz, ReportBz>();
-            services.AddTransient<IPieceBz, PieceBz>();
-            services.AddTransient<IEmployeeBz, EmployeeBz>();
-            services.AddTransient<ICredentialsBz, CredentialsBz>();
-            services.AddTransient<IEmployeeRangeBz, EmployeeRangeBz>();
-            services.AddTransient<ICredentialsData, CredentialsData>();
+            //services.AddTransient<IIncidenceBz, IncidenceBz>();
+            //services.AddTransient<IReportBz, ReportBz>();
+            //services.AddTransient<IPieceBz, PieceBz>();
+            //services.AddTransient<IEmployeeBz, EmployeeBz>();
+            //services.AddTransient<ICredentialsBz, CredentialsBz>();
+            //services.AddTransient<IEmployeeRangeBz, EmployeeRangeBz>();
+            /*services.AddTransient<ICredentialsData, CredentialsData>();
             services.AddTransient<IIncidenceData, IncidenceData>();
             services.AddTransient<IEmployeeData, EmployeeData>();
             services.AddTransient<IEmployeeRangeData, EmployeeRangeData>();
             services.AddTransient<INoteData, NoteData>();
             services.AddTransient<IPieceData, PieceData>();
             services.AddTransient<IPieceTypeData, PieceTypeData>();
-            services.AddTransient<IReportData, ReportData>();
-            services.AddTransient<IPieceTypeBz, PieceTypeBz>();
-            services.AddTransient<INoteBz, NoteBz>();
-            services.AddDbContext<IncidenceContext>(options =>
+            services.AddTransient<IReportData, ReportData>();*/
+            //services.AddTransient<IPieceTypeBz, PieceTypeBz>();
+            //services.AddTransient<INoteBz, NoteBz>();
+            services.AddDbContext<CurriculumContext>(options =>
             options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection")
                 )

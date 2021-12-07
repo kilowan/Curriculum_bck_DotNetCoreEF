@@ -1,4 +1,4 @@
-﻿using Incidences.Data.Models;
+﻿using curriculum.Data;
 using Incidences.Models.Incidence;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,15 +8,15 @@ using System.Linq;
 
 namespace Incidences.Data
 {
-    public class NoteData : INoteData
+    public class NoteData //: INoteData
     {
-        private readonly IncidenceContext _context;
-        public NoteData(IncidenceContext context)
+        private readonly CurriculumContext _context;
+        public NoteData(CurriculumContext context)
         {
             _context = context;
         }
 
-        public Note SelectEmployeeNoteByIncidenceId(int incidenceId)
+        /*public Note SelectEmployeeNoteByIncidenceId(int incidenceId)
         {
             try
             {
@@ -117,6 +117,6 @@ namespace Incidences.Data
             {
                 throw new Exception(e.Message);
             }
-        }
+        }*/
     }
 }

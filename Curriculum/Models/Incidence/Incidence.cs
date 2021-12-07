@@ -1,5 +1,4 @@
-﻿using Incidences.Data.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -191,7 +190,7 @@ namespace Incidences.Models.Incidence
             this.initDateTime = initDateTime;
             this.pieces = pieces;
         }
-        public Incidence(incidence inc)
+        /*public Incidence(incidence inc)
         {
             if (inc.state != 1)
             {
@@ -240,8 +239,8 @@ namespace Incidences.Models.Incidence
                     this.pieces.Add(new Piece(ipl.Piece));
                 }
             }
-        }
-        public Incidence(
+        }*/
+        /*public Incidence(
             int id,
             int state,
             string owner,
@@ -279,7 +278,7 @@ namespace Incidences.Models.Incidence
                 this.pieces.Add(new Piece(ipl.Piece));
             }
             this.notes = notes;
-        }
+        }*/
         public Incidence(int id, int state, string owner, int ownerId, DateTime initDateTime, string issueDesc, IList<Piece> pieces, IList<Note> notes, DateTime? finishDateTime)
         {
             this.id = id;

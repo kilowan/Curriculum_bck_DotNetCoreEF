@@ -1,6 +1,4 @@
-﻿using Incidences.Data.Models;
-
-namespace Incidences.Models.Employee
+﻿namespace Incidences.Models.Employee
 {
     public class TypeRange
     {
@@ -33,10 +31,10 @@ namespace Incidences.Models.Employee
             this.id = id;
             this.name = name;
         }
-        public TypeRange(employee_range er)
+        /*public TypeRange(employee_range er)
         {
             this.id = er.id;
             this.name = er.name;
-        }
+        }*/
     }
 }

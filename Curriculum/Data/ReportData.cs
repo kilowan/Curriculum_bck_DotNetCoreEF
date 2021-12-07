@@ -1,4 +1,4 @@
-﻿using Incidences.Data.Models;
+﻿using curriculum.Data;
 using Incidences.Models.Incidence;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Incidences.Data
 {
-    public class ReportData : IReportData
+    public class ReportData //: IReportData
     {
         /// <summary>
         /// One mounth in seconds
@@ -38,9 +38,9 @@ namespace Incidences.Data
         /// <summary>
         /// SqlBase dependency
         /// </summary>
-        private readonly IncidenceContext _context;
+        private readonly CurriculumContext _context;
         #endregion
-        public ReportData(IncidenceContext context)
+        public ReportData(CurriculumContext context)
         {
             _context = context;
         }
@@ -49,7 +49,7 @@ namespace Incidences.Data
         /// Gets the reported pieces
         /// </summary>
         /// <returns>Returns pieces reported</returns>
-        public IList<ReportedPiece> SelectReportedPieces()
+        /*public IList<ReportedPiece> SelectReportedPieces()
         {
             try
             {
@@ -177,7 +177,7 @@ namespace Incidences.Data
             {
                 throw new Exception(e.Message);
             }
-        }
+        }*/
 
         /// <summary>
         /// Gets unit's number
