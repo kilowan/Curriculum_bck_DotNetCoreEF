@@ -8137,11 +8137,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Usuarios\\Juan\\Documentos\\incidencesDotNetCore\\Incidences\\Incidences.csproj",
-      "projectName": "Incidences",
-      "projectPath": "G:\\Usuarios\\Juan\\Documentos\\incidencesDotNetCore\\Incidences\\Incidences.csproj",
+      "projectUniqueName": "G:\\Usuarios\\Juan\\Documentos\\CurriculumBckDotNetCore\\Curriculum\\curriculum.csproj",
+      "projectName": "curriculum",
+      "projectPath": "G:\\Usuarios\\Juan\\Documentos\\CurriculumBckDotNetCore\\Curriculum\\curriculum.csproj",
       "packagesPath": "C:\\Users\\Juan Francisco\\.nuget\\packages\\",
-      "outputPath": "G:\\Usuarios\\Juan\\Documentos\\incidencesDotNetCore\\Incidences\\obj\\",
+      "outputPath": "G:\\Usuarios\\Juan\\Documentos\\CurriculumBckDotNetCore\\Curriculum\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Juan Francisco\\AppData\\Roaming\\NuGet\\NuGet.Config",
