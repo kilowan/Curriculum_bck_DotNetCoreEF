@@ -1,9 +1,10 @@
 ﻿using curriculum.Models;
+using System.Collections.Generic;
 
 namespace curriculum.Business
 {
     public interface ICurriculumBz
     {
-        public Curriculum getCurriculum(int userId, int curriculumId);
+        public IList<Curriculum> getCurriculums(int userId, int curriculumId);
     }
 }
