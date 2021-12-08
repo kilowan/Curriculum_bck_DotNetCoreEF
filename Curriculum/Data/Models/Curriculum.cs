@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace curriculum.Data.Models
 {
-    public class Curriculum : baseClass
+    public class Curriculum : basebaseClass
     {
         public string description { get; set; }
         public int userId { get; set; }
@@ -19,6 +19,9 @@ namespace curriculum.Data.Models
 
         [InverseProperty("curriculum")]
         public IList<SocialMedia> socialMedia { get; set; }
+
+        [InverseProperty("curriculum")]
+        public IList<OtherData> otherData { get; set; }
 
         [ForeignKey(nameof(Curriculum.userId))]
         public User user { get; set; }

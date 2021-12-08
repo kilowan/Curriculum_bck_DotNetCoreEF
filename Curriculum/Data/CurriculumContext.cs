@@ -11,6 +11,7 @@ namespace curriculum.Data
 
         public DbSet<Curriculum> Curriculums { get; set; }
         public DbSet<User> User { get; set; }
+        public DbSet<Credentials> Credentials { get; set; }
         public DbSet<UserNumber> UserNumbers { get; set; }
         public DbSet<PhoneNumber> PhoneNumbers { get; set; }
         public DbSet<UserLanguage> UserLanguages { get; set; }
@@ -25,6 +26,8 @@ namespace curriculum.Data
         public DbSet<Training> Trainings { get; set; }
         public DbSet<Email> Emails { get; set; }
         public DbSet<SocialMedia> Linkedins { get; set; }
+        public DbSet<OtherData> OtherDatas { get; set; }
+        public DbSet<Value> Values { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -45,6 +48,14 @@ namespace curriculum.Data
                 .HasForeignKey(un => un.userId);
             });
             modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.Entity<Credentials>(entity =>
+            {
+                entity.HasKey(cred => cred.id);
+                entity.Property(cred => cred.id).ValueGeneratedNever();
+                entity.HasOne(cred => cred.user)
+                .WithOne(sm => sm.credentials);
+            });
+            modelBuilder.Entity<Credentials>().ToTable("Credentials");
             modelBuilder.Entity<UserNumber>(entity =>
             {
                 entity.HasKey(un => un.id);
@@ -74,8 +85,26 @@ namespace curriculum.Data
                 entity.HasMany(cur => cur.userLanguageList)
                 .WithOne(ul => ul.curriculum)
                 .HasForeignKey(ul => ul.curriculumId);
+                entity.HasMany(cur => cur.otherData)
+                .WithOne(ul => ul.curriculum)
+                .HasForeignKey(ul => ul.curriculumId);
             });
             modelBuilder.Entity<Curriculum>().ToTable("Curriculum");
+            modelBuilder.Entity<OtherData>(entity =>
+            {
+                entity.HasKey(cur => cur.id);
+                entity.Property(cur => cur.id).ValueGeneratedNever();
+                entity.HasMany(cur => cur.values)
+                .WithOne(sm => sm.other)
+                .HasForeignKey(sm => sm.OtherDataId);
+            });
+            modelBuilder.Entity<OtherData>().ToTable("OtherData");
+            modelBuilder.Entity<Value>(entity =>
+            {
+                entity.HasKey(cur => cur.id);
+                entity.Property(cur => cur.id).ValueGeneratedNever();
+            });
+            modelBuilder.Entity<Value>().ToTable("Value");
             modelBuilder.Entity<UserLanguage>(entity =>
             {
                 entity.HasKey(e => e.id);

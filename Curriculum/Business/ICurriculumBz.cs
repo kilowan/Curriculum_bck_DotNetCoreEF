@@ -5,6 +5,8 @@ namespace curriculum.Business
 {
     public interface ICurriculumBz
     {
-        public IList<Curriculum> getCurriculums(int userId, int curriculumId);
+        public Curriculum getCurriculumById(int userId, int curriculumId);
+        public Curriculum getCurriculumById(int curriculumId);
+        public IList<Curriculum> getCurriculumsByUserId(int userId);
     }
 }
