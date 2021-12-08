@@ -1,20 +1,37 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace curriculum.Models
 {
     public class Curriculum
     {
-        public string name { get; set; }
+        public string curriculumName { get; set; }
         public string description { get; set; }
+        public string fullName { get; set; }
+        public IList<PhoneNumber> phoneNumbers { get; set; }
+        public IList<Email> emailList { get; set; }
         public IList<Experience> experience { get; set; }
-        public IList<Training> training { get; set; }
+        public IList<Training> otherTraining { get; set; }
+        public IList<Training> academicTraining { get; set; }
         public IList<Language> languageList { get; set; }
         public IList<SocialMedia> socialMedia { get; set; }
         public IList<OtherData> otherData { get; set; }
 
         public Curriculum(Data.Models.Curriculum curriculum)
         {
-            name = curriculum.name;
+            curriculumName = curriculum.name;
+            fullName = $"{curriculum.user.name} {curriculum.user.surname1} {curriculum.user.surname2}";
+            phoneNumbers = new List<PhoneNumber>();
+            foreach (Data.Models.UserNumber userNumber in curriculum.user.phoneNumber)
+            {
+                phoneNumbers.Add(new PhoneNumber(userNumber.phone));
+            }
+
+            emailList = new List<Email>();
+            foreach (Data.Models.Email email in curriculum.user.emailList)
+            {
+                emailList.Add(new Email(email));
+            }
             description = curriculum.description;
             experience = new List<Experience>();
             foreach (Data.Models.Experience exp in curriculum.experience)
@@ -22,10 +39,22 @@ namespace curriculum.Models
                 experience.Add(new Experience(exp));
             }
 
-            training = new List<Training>();
-            foreach (Data.Models.Training train in curriculum.training)
+            IList<Data.Models.Training> academic = curriculum.training
+                .Where(tr => tr.type == Data.Models.TrainingType.academic)
+                .ToList();
+            IList<Data.Models.Training> others = curriculum.training
+                .Where(tr => tr.type == Data.Models.TrainingType.other)
+                .ToList();
+            academicTraining = new List<Training>();
+            foreach (Data.Models.Training train in academic)
             {
-                training.Add(new Training(train));
+                academicTraining.Add(new Training(train));
+            }
+
+            otherTraining = new List<Training>();
+            foreach (Data.Models.Training train in others)
+            {
+                otherTraining.Add(new Training(train));
             }
 
             languageList = new List<Language>();
