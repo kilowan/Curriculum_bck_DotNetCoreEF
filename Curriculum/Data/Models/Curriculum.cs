@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace curriculum.Data.Models
 {
-    public class Curriculum : basebaseClass
+    public class Curriculum : baseClass
     {
         public string description { get; set; }
         public int userId { get; set; }

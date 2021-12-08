@@ -17,6 +17,5 @@ namespace curriculum.Data.Models
 
         [ForeignKey(nameof(Experience.curriculumId))]
         public Curriculum curriculum { get; set; }
-
     }
 }

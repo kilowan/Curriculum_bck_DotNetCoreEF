@@ -9,8 +9,6 @@ namespace curriculum.Data.Models
 
         [ForeignKey(nameof(Content.trainingId))]
         public Training training { get; set; }
-
-        //[InverseProperty("content")]
         public IList<SubContent> subContents { get; set; }
     }
 }

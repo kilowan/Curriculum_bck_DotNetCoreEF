@@ -6,8 +6,6 @@ namespace curriculum.Data.Models
     public class Project : basebaseClass
     {
         public int contractId { get; set; }
-
-        //[InverseProperty("proyect")]
         public IList<Description> descriptionList { get; set; }
 
         [ForeignKey(nameof(Project.contractId))]
