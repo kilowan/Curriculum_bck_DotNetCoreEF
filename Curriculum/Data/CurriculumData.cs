@@ -50,6 +50,7 @@ namespace curriculum.Data
                 .Include(user => user.credentials)
                 .Include(user => user.emailList)
                 .Include(user => user.phoneNumber)
+                .ThenInclude(un => un.phone)
                 .Where(user => user.id == curr.userId)
                 .FirstOrDefault();
             return curr;
