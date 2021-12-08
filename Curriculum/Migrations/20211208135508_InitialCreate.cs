@@ -69,8 +69,7 @@ namespace curriculum.Migrations
                 name: "Credentials",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    id = table.Column<int>(type: "int", nullable: false),
                     username = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     userId = table.Column<int>(type: "int", nullable: false)
@@ -175,6 +174,25 @@ namespace curriculum.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "OtherData",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false),
+                    curriculumId = table.Column<int>(type: "int", nullable: false),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OtherData", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_OtherData_Curriculum_curriculumId",
+                        column: x => x.curriculumId,
+                        principalTable: "Curriculum",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SocialMedia",
                 columns: table => new
                 {
@@ -258,6 +276,25 @@ namespace curriculum.Migrations
                         name: "FK_Contract_Experience_experienceId",
                         column: x => x.experienceId,
                         principalTable: "Experience",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Value",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false),
+                    OtherDataId = table.Column<int>(type: "int", nullable: false),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Value", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Value_OtherData_OtherDataId",
+                        column: x => x.OtherDataId,
+                        principalTable: "OtherData",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -380,6 +417,11 @@ namespace curriculum.Migrations
                 column: "levelId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_OtherData_curriculumId",
+                table: "OtherData",
+                column: "curriculumId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Project_contractId",
                 table: "Project",
                 column: "contractId");
@@ -418,6 +460,11 @@ namespace curriculum.Migrations
                 name: "IX_UserNumber_userId",
                 table: "UserNumber",
                 column: "userId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Value_OtherDataId",
+                table: "Value",
+                column: "OtherDataId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -444,6 +491,9 @@ namespace curriculum.Migrations
                 name: "UserNumber");
 
             migrationBuilder.DropTable(
+                name: "Value");
+
+            migrationBuilder.DropTable(
                 name: "Project");
 
             migrationBuilder.DropTable(
@@ -454,6 +504,9 @@ namespace curriculum.Migrations
 
             migrationBuilder.DropTable(
                 name: "PhoneNumber");
+
+            migrationBuilder.DropTable(
+                name: "OtherData");
 
             migrationBuilder.DropTable(
                 name: "Contract");

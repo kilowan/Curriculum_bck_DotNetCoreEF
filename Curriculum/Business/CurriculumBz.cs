@@ -13,15 +13,24 @@ namespace curriculum.Business
             this.curriculumData = curriculumData;
         }
 
-        public IList<Curriculum> getCurriculums(int userId, int curriculumId)
+        public Curriculum getCurriculumById(int userId, int curriculumId)
         {
-            IList <Curriculum> curriculumList = new List<Curriculum>();
-            IList<Data.Models.Curriculum> curriculums = curriculumData.getCurriculum(userId, curriculumId);
-            foreach (Data.Models.Curriculum curriculum in curriculums)
+            return new Curriculum(curriculumData.getCurriculumById(userId, curriculumId));
+        }
+
+        public Curriculum getCurriculumById(int curriculumId)
+        {
+            return new Curriculum(curriculumData.getCurriculumById(curriculumId));
+        }
+
+        public IList<Curriculum> getCurriculumsByUserId(int userId)
+        {
+            IList<Curriculum> currls = new List<Curriculum>();
+            foreach (Data.Models.Curriculum curriculum in curriculumData.getCurriculumsByUserId(userId))
             {
-                curriculumList.Add(new Curriculum(curriculum));
+                currls.Add(new Curriculum(curriculum));
             }
-            return curriculumList;
+            return currls;
         }
     }
 }

@@ -10,7 +10,7 @@ using curriculum.Data;
 namespace curriculum.Migrations
 {
     [DbContext(typeof(CurriculumContext))]
-    [Migration("20211207184440_InitialCreate")]
+    [Migration("20211208135508_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,9 +60,7 @@ namespace curriculum.Migrations
             modelBuilder.Entity("curriculum.Data.Models.Credentials", b =>
                 {
                     b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("password")
                         .HasColumnType("nvarchar(max)");
@@ -200,6 +198,24 @@ namespace curriculum.Migrations
                     b.HasKey("id");
 
                     b.ToTable("LanguageLevel");
+                });
+
+            modelBuilder.Entity("curriculum.Data.Models.OtherData", b =>
+                {
+                    b.Property<int>("id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("curriculumId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("curriculumId");
+
+                    b.ToTable("OtherData");
                 });
 
             modelBuilder.Entity("curriculum.Data.Models.PhoneNumber", b =>
@@ -367,6 +383,24 @@ namespace curriculum.Migrations
                     b.ToTable("UserNumber");
                 });
 
+            modelBuilder.Entity("curriculum.Data.Models.Value", b =>
+                {
+                    b.Property<int>("id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OtherDataId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("OtherDataId");
+
+                    b.ToTable("Value");
+                });
+
             modelBuilder.Entity("curriculum.Data.Models.Content", b =>
                 {
                     b.HasOne("curriculum.Data.Models.Training", "training")
@@ -455,6 +489,17 @@ namespace curriculum.Migrations
                     b.Navigation("level");
                 });
 
+            modelBuilder.Entity("curriculum.Data.Models.OtherData", b =>
+                {
+                    b.HasOne("curriculum.Data.Models.Curriculum", "curriculum")
+                        .WithMany("otherData")
+                        .HasForeignKey("curriculumId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("curriculum");
+                });
+
             modelBuilder.Entity("curriculum.Data.Models.Project", b =>
                 {
                     b.HasOne("curriculum.Data.Models.Contract", "contract")
@@ -537,6 +582,17 @@ namespace curriculum.Migrations
                     b.Navigation("user");
                 });
 
+            modelBuilder.Entity("curriculum.Data.Models.Value", b =>
+                {
+                    b.HasOne("curriculum.Data.Models.OtherData", "other")
+                        .WithMany("values")
+                        .HasForeignKey("OtherDataId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("other");
+                });
+
             modelBuilder.Entity("curriculum.Data.Models.Content", b =>
                 {
                     b.Navigation("subContents");
@@ -551,6 +607,8 @@ namespace curriculum.Migrations
                 {
                     b.Navigation("experience");
 
+                    b.Navigation("otherData");
+
                     b.Navigation("socialMedia");
 
                     b.Navigation("training");
@@ -561,6 +619,11 @@ namespace curriculum.Migrations
             modelBuilder.Entity("curriculum.Data.Models.Experience", b =>
                 {
                     b.Navigation("contracts");
+                });
+
+            modelBuilder.Entity("curriculum.Data.Models.OtherData", b =>
+                {
+                    b.Navigation("values");
                 });
 
             modelBuilder.Entity("curriculum.Data.Models.Project", b =>
