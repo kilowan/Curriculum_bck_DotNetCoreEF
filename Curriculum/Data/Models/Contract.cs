@@ -7,7 +7,6 @@ namespace curriculum.Data.Models
     {
         public int experienceId { get; set; }
 
-
         [InverseProperty("contract")]
         public IList<Project> proyects { get; set; }
 
