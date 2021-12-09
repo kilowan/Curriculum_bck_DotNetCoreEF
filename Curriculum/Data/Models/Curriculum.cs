@@ -7,6 +7,8 @@ namespace curriculum.Data.Models
     {
         public string description { get; set; }
         public int userId { get; set; }
+        public int phoneId { get; set; }
+        public int emailId { get; set; }
 
         [InverseProperty("curriculum")]
         public IList<Experience> experience { get; set; }
@@ -25,5 +27,11 @@ namespace curriculum.Data.Models
 
         [ForeignKey(nameof(Curriculum.userId))]
         public User user { get; set; }
+
+        [ForeignKey(nameof(Curriculum.phoneId))]
+        public PhoneNumber phoneNumber { get; set; }
+
+        [ForeignKey(nameof(Curriculum.emailId))]
+        public Email email { get; set; }
     }
 }

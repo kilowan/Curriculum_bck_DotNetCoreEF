@@ -8,8 +8,8 @@ namespace curriculum.Models
         public string curriculumName { get; set; }
         public string description { get; set; }
         public string fullName { get; set; }
-        public IList<PhoneNumber> phoneNumbers { get; set; }
-        public IList<Email> emailList { get; set; }
+        public PhoneNumber phoneNumber { get; set; }
+        public Email email { get; set; }
         public IList<Experience> experience { get; set; }
         public IList<Training> otherTraining { get; set; }
         public IList<Training> academicTraining { get; set; }
@@ -21,17 +21,9 @@ namespace curriculum.Models
         {
             curriculumName = curriculum.name;
             fullName = $"{curriculum.user.name} {curriculum.user.surname1} {curriculum.user.surname2}";
-            phoneNumbers = new List<PhoneNumber>();
-            foreach (Data.Models.UserNumber userNumber in curriculum.user.phoneNumber)
-            {
-                phoneNumbers.Add(new PhoneNumber(userNumber.phone));
-            }
+            phoneNumber = new PhoneNumber(curriculum.phoneNumber);
 
-            emailList = new List<Email>();
-            foreach (Data.Models.Email email in curriculum.user.emailList)
-            {
-                emailList.Add(new Email(email));
-            }
+            email = new Email(curriculum.email);
             description = curriculum.description;
             experience = new List<Experience>();
             foreach (Data.Models.Experience exp in curriculum.experience)

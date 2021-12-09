@@ -86,26 +86,6 @@ namespace curriculum.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Curriculum",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    userId = table.Column<int>(type: "int", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Curriculum", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_Curriculum_User_userId",
-                        column: x => x.userId,
-                        principalTable: "User",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Email",
                 columns: table => new
                 {
@@ -148,6 +128,39 @@ namespace curriculum.Migrations
                         principalTable: "User",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Curriculum",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false),
+                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    userId = table.Column<int>(type: "int", nullable: false),
+                    phoneId = table.Column<int>(type: "int", nullable: false),
+                    emailId = table.Column<int>(type: "int", nullable: false),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Curriculum", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Curriculum_Email_emailId",
+                        column: x => x.emailId,
+                        principalTable: "Email",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Curriculum_PhoneNumber_phoneId",
+                        column: x => x.phoneId,
+                        principalTable: "PhoneNumber",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Curriculum_User_userId",
+                        column: x => x.userId,
+                        principalTable: "User",
+                        principalColumn: "id");
                 });
 
             migrationBuilder.CreateTable(
@@ -392,6 +405,16 @@ namespace curriculum.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Curriculum_emailId",
+                table: "Curriculum",
+                column: "emailId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Curriculum_phoneId",
+                table: "Curriculum",
+                column: "phoneId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Curriculum_userId",
                 table: "Curriculum",
                 column: "userId");
@@ -476,9 +499,6 @@ namespace curriculum.Migrations
                 name: "Description");
 
             migrationBuilder.DropTable(
-                name: "Email");
-
-            migrationBuilder.DropTable(
                 name: "SocialMedia");
 
             migrationBuilder.DropTable(
@@ -503,9 +523,6 @@ namespace curriculum.Migrations
                 name: "Language");
 
             migrationBuilder.DropTable(
-                name: "PhoneNumber");
-
-            migrationBuilder.DropTable(
                 name: "OtherData");
 
             migrationBuilder.DropTable(
@@ -522,6 +539,12 @@ namespace curriculum.Migrations
 
             migrationBuilder.DropTable(
                 name: "Curriculum");
+
+            migrationBuilder.DropTable(
+                name: "Email");
+
+            migrationBuilder.DropTable(
+                name: "PhoneNumber");
 
             migrationBuilder.DropTable(
                 name: "User");
