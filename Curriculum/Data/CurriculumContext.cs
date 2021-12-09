@@ -37,7 +37,8 @@ namespace curriculum.Data
                 entity.Property(user => user.id).ValueGeneratedNever();
                 entity.HasMany(user => user.curriculums)
                 .WithOne(sm => sm.user)
-                .HasForeignKey(sm => sm.userId);
+                .HasForeignKey(sm => sm.userId)
+                .OnDelete(DeleteBehavior.NoAction);
                 entity.HasMany(user => user.emailList)
                 .WithOne(em => em.user)
                 .HasForeignKey(em => em.userId);
@@ -73,6 +74,8 @@ namespace curriculum.Data
             {
                 entity.HasKey(cur => cur.id);
                 entity.Property(cur => cur.id).ValueGeneratedNever();
+                entity.HasOne(cur => cur.email);
+                entity.HasOne(cur => cur.phoneNumber);
                 entity.HasMany(cur => cur.socialMedia)
                 .WithOne(sm => sm.curriculum)
                 .HasForeignKey(sm => sm.curriculumId);

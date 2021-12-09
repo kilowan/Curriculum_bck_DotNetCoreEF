@@ -85,13 +85,23 @@ namespace curriculum.Migrations
                     b.Property<string>("description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("emailId")
+                        .HasColumnType("int");
+
                     b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("phoneId")
+                        .HasColumnType("int");
 
                     b.Property<int>("userId")
                         .HasColumnType("int");
 
                     b.HasKey("id");
+
+                    b.HasIndex("emailId");
+
+                    b.HasIndex("phoneId");
 
                     b.HasIndex("userId");
 
@@ -434,11 +444,27 @@ namespace curriculum.Migrations
 
             modelBuilder.Entity("curriculum.Data.Models.Curriculum", b =>
                 {
+                    b.HasOne("curriculum.Data.Models.Email", "email")
+                        .WithMany()
+                        .HasForeignKey("emailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("curriculum.Data.Models.PhoneNumber", "phoneNumber")
+                        .WithMany()
+                        .HasForeignKey("phoneId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("curriculum.Data.Models.User", "user")
                         .WithMany("curriculums")
                         .HasForeignKey("userId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.Navigation("email");
+
+                    b.Navigation("phoneNumber");
 
                     b.Navigation("user");
                 });

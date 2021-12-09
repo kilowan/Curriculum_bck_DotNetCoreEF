@@ -31,6 +31,9 @@ namespace curriculum.Data
         public Curriculum getCurriculumById(int curriculumId)
         {
             Curriculum curr = _context.Curriculums
+                .Include(curr => curr.email)
+                .Include(curr => curr.phoneNumber)
+                .Include(curr => curr.user)
                 .Include(curr => curr.socialMedia)
                 .Include(curr => curr.training)
                 .ThenInclude(sm => sm.contents)
@@ -45,13 +48,6 @@ namespace curriculum.Data
                 .Include(curr => curr.otherData)
                 .ThenInclude(od => od.values)
                 .Where(curr => curr.id == curriculumId)
-                .FirstOrDefault();
-            curr.user = _context.User
-                .Include(user => user.credentials)
-                .Include(user => user.emailList)
-                .Include(user => user.phoneNumber)
-                .ThenInclude(un => un.phone)
-                .Where(user => user.id == curr.userId)
                 .FirstOrDefault();
             return curr;
         }
