@@ -13,7 +13,7 @@ namespace curriculum.Data
         {
             _context = context;
         }
-        public Curriculum getCurriculumById(int userId, int curriculumId)
+        public Curriculum GetCurriculumById(int userId, int curriculumId)
         {
             try
             {
@@ -36,7 +36,7 @@ namespace curriculum.Data
             }
         }
 
-        public Curriculum getCurriculumById(int curriculumId)
+        public Curriculum GetCurriculumById(int curriculumId)
         {
             try
             {
@@ -68,21 +68,14 @@ namespace curriculum.Data
             }
         }
 
-        public IList<Curriculum> getCurriculumsByUserId(int userId)
+        public IList<Curriculum> GetCurriculumsByUserId(int userId, string username)
         {
             try
             {
                 return _context.Curriculums
-                    .Include(curr => curr.socialMedia)
-                    .Include(curr => curr.training)
-                    .ThenInclude(sm => sm.contents)
-                    .ThenInclude(con => con.subContents)
-                    .Include(curr => curr.userLanguageList)
-                    .Include(curr => curr.experience)
-                    .ThenInclude(exp => exp.contracts)
-                    .ThenInclude(contr => contr.proyects)
-                    .ThenInclude(proj => proj.descriptionList)
-                    .Where(curr => curr.userId == userId)
+                    .Include(curr => curr.user)
+                    .ThenInclude(user => user.credentials)
+                    .Where(curr => curr.userId == userId && curr.user.credentials.username == username)
                     .ToList();
             }
             catch (Exception e)
