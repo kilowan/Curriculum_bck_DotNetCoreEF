@@ -2,6 +2,7 @@
 using curriculum.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 
 namespace curriculum.Controllers
 {
@@ -16,11 +17,24 @@ namespace curriculum.Controllers
         }
 
         [HttpGet("{id}")]
-        public Curriculum Details(int id)
+        public CurriculumDetail Details(int id)
         {
             try
             {
-                return curriculumBz.getCurriculumById(id);
+                return curriculumBz.GetCurriculumById(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        [HttpGet("{userId}/{username}")]
+        public IList<Curriculum> GetCurriculumsByUserId(int userId, string username)
+        {
+            try
+            {
+                return curriculumBz.GetCurriculumsByUserId(userId, username);
             }
             catch (Exception e)
             {

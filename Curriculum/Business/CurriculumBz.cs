@@ -14,11 +14,11 @@ namespace curriculum.Business
             this.curriculumData = curriculumData;
         }
 
-        public Curriculum getCurriculumById(int userId, int curriculumId)
+        public CurriculumDetail GetCurriculumById(int userId, int curriculumId)
         {
             try
             {
-                return new Curriculum(curriculumData.getCurriculumById(userId, curriculumId));
+                return new CurriculumDetail(curriculumData.GetCurriculumById(userId, curriculumId));
             }
             catch (Exception e)
             {
@@ -26,11 +26,11 @@ namespace curriculum.Business
             }
         }
 
-        public Curriculum getCurriculumById(int curriculumId)
+        public CurriculumDetail GetCurriculumById(int curriculumId)
         {
             try
             {
-                return new Curriculum(curriculumData.getCurriculumById(curriculumId));
+                return new CurriculumDetail(curriculumData.GetCurriculumById(curriculumId));
             }
             catch (Exception e)
             {
@@ -38,15 +38,16 @@ namespace curriculum.Business
             }
         }
 
-        public IList<Curriculum> getCurriculumsByUserId(int userId)
+        public IList<Curriculum> GetCurriculumsByUserId(int userId, string username)
         {
             try
             {
                 IList<Curriculum> currls = new List<Curriculum>();
-                foreach (Data.Models.Curriculum curriculum in curriculumData.getCurriculumsByUserId(userId))
+                foreach (Data.Models.Curriculum curriculum in curriculumData.GetCurriculumsByUserId(userId, username))
                 {
                     currls.Add(new Curriculum(curriculum));
                 }
+
                 return currls;
             }
             catch (Exception e)
