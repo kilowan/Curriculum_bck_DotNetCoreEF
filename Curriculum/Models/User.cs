@@ -8,6 +8,7 @@ namespace curriculum.Models
         public string name { get; set; }
         public string surname1 { get; set; }
         public string surname2 { get; set; }
+        public int userId { get; set; }
         public Credentials credentials { get; set; }
         public IList<PhoneNumber> phoneNumbers { get; set; }
         public IList<Email> emailList { get; set; }
@@ -55,6 +56,7 @@ namespace curriculum.Models
         }
         public User(Data.Models.User user)
         {
+            userId = user.id;
             name = user.name;
             surname1 = user.surname1;
             surname2 = user.surname2;
