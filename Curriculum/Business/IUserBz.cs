@@ -8,6 +8,6 @@ namespace curriculum.Business
 {
     public interface IUserBz
     {
-        public User getUserById(int UserId);
+        public User GetUserByUsername(string userName);
     }
 }

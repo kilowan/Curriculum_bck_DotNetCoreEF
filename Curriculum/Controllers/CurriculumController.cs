@@ -1,6 +1,7 @@
 ﻿using curriculum.Business;
 using curriculum.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace curriculum.Controllers
 {
@@ -17,7 +18,14 @@ namespace curriculum.Controllers
         [HttpGet("{id}")]
         public Curriculum Details(int id)
         {
-            return curriculumBz.getCurriculumById(id);
+            try
+            {
+                return curriculumBz.getCurriculumById(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

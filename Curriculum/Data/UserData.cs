@@ -17,12 +17,36 @@ namespace curriculum.Data
 
         public User getUserById(int UserId)
         {
-            return _context.User
-                .Include(User => User.phoneNumber)
-                .ThenInclude(pn => pn.phone)
-                .Include(User => User.emailList)
-                .Where(User => User.id == UserId)
-                .FirstOrDefault();
+            try
+            {
+                return _context.User
+                    .Include(User => User.phoneNumber)
+                    .ThenInclude(pn => pn.phone)
+                    .Include(User => User.emailList)
+                    .Where(User => User.id == UserId)
+                    .FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        public User getUserByUserName(string username)
+        {
+            try
+            {
+                return _context.User
+                    .Include(user => user.credentials)
+                    .Include(User => User.phoneNumber)
+                    .ThenInclude(pn => pn.phone)
+                    .Include(User => User.emailList)
+                    .Where(User => User.credentials.username == username)
+                    .FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

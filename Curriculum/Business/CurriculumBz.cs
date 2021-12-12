@@ -1,5 +1,6 @@
 ﻿using curriculum.Data;
 using curriculum.Models;
+using System;
 using System.Collections.Generic;
 
 namespace curriculum.Business
@@ -15,22 +16,43 @@ namespace curriculum.Business
 
         public Curriculum getCurriculumById(int userId, int curriculumId)
         {
-            return new Curriculum(curriculumData.getCurriculumById(userId, curriculumId));
+            try
+            {
+                return new Curriculum(curriculumData.getCurriculumById(userId, curriculumId));
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public Curriculum getCurriculumById(int curriculumId)
         {
-            return new Curriculum(curriculumData.getCurriculumById(curriculumId));
+            try
+            {
+                return new Curriculum(curriculumData.getCurriculumById(curriculumId));
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public IList<Curriculum> getCurriculumsByUserId(int userId)
         {
-            IList<Curriculum> currls = new List<Curriculum>();
-            foreach (Data.Models.Curriculum curriculum in curriculumData.getCurriculumsByUserId(userId))
+            try
             {
-                currls.Add(new Curriculum(curriculum));
+                IList<Curriculum> currls = new List<Curriculum>();
+                foreach (Data.Models.Curriculum curriculum in curriculumData.getCurriculumsByUserId(userId))
+                {
+                    currls.Add(new Curriculum(curriculum));
+                }
+                return currls;
             }
-            return currls;
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

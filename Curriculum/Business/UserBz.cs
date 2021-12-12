@@ -1,5 +1,6 @@
 ﻿using curriculum.Data;
 using curriculum.Models;
+using System;
 
 namespace curriculum.Business
 {
@@ -11,9 +12,16 @@ namespace curriculum.Business
             this.userData = userData;
         }
 
-        public User getUserById(int UserId) 
+        public User GetUserByUsername(string userName)
         {
-            return new User(userData.getUserById(UserId));
+            try
+            {
+                return new User(userData.getUserByUserName(userName));
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }
