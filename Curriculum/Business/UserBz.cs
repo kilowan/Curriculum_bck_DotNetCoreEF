@@ -12,17 +12,6 @@ namespace curriculum.Business
             this.userData = userData;
         }
 
-        public User GetUserById(int UserId)
-        {
-            try
-            {
-                return new User(userData.getUserById(UserId));
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
-        }
         public User GetUserByUsername(string userName)
         {
             try
