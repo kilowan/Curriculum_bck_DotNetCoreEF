@@ -36,7 +36,7 @@ namespace curriculum.Data
                     .Where(creds => creds.username == username)
                     .Select(creds => creds.id)
                     .FirstOrDefault();
-                return id != null ? true : false;
+                return id != null && id != 0 ? true : false;
             }
             catch (Exception e)
             {
