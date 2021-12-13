@@ -1,4 +1,5 @@
 ﻿using curriculum.Business;
+using curriculum.Models.Employee;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -33,6 +34,18 @@ namespace curriculum.Controllers
             try
             {
                 return credentialsBz.CheckUsername(username);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        [HttpPut]
+        public bool UpdateCredentials(CredentialsDto credentials)
+        {
+            try
+            {
+                return credentialsBz.UpdatePassword(credentials);
             }
             catch (Exception e)
             {

@@ -1,4 +1,5 @@
 ﻿using curriculum.Data;
+using curriculum.Models.Employee;
 using System;
 
 namespace curriculum.Business
@@ -28,6 +29,18 @@ namespace curriculum.Business
             try
             {
                 return credentialsData.CheckUsername(username);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public bool UpdatePassword(CredentialsDto creds)
+        {
+            try
+            {
+                return credentialsData.UpdatePassword(creds);
             }
             catch (Exception e)
             {
