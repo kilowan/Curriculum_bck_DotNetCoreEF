@@ -27,6 +27,8 @@ namespace Incidences
             services.AddTransient<IUserData, UserData>();
             services.AddTransient<ICredentialsData, CredentialsData>();
             services.AddTransient<ICredentialsBz, CredentialsBz>();
+            services.AddTransient<IPasswordRecoveryData, PasswordRecoveryData>();
+            services.AddTransient<IPasswordRecoveryBz, PasswordRecoveryBz>();
             services.AddDbContext<CurriculumContext>(options =>
             options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection")

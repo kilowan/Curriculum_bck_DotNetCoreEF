@@ -147,6 +147,34 @@ namespace curriculum.Migrations
                     b.ToTable("Email");
                 });
 
+            modelBuilder.Entity("curriculum.Data.Models.EmailConfig", b =>
+                {
+                    b.Property<int>("id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("defaultCredentials")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("host")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("port")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("ssl")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("EmailConfig");
+                });
+
             modelBuilder.Entity("curriculum.Data.Models.Experience", b =>
                 {
                     b.Property<int>("id")
@@ -258,6 +286,32 @@ namespace curriculum.Migrations
                     b.HasIndex("contractId");
 
                     b.ToTable("Project");
+                });
+
+            modelBuilder.Entity("curriculum.Data.Models.RecoverLog", b =>
+                {
+                    b.Property<int>("id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("active")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.Property<string>("code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("userId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("userId");
+
+                    b.ToTable("RecoverLog");
                 });
 
             modelBuilder.Entity("curriculum.Data.Models.SocialMedia", b =>
@@ -533,6 +587,17 @@ namespace curriculum.Migrations
                         .IsRequired();
 
                     b.Navigation("contract");
+                });
+
+            modelBuilder.Entity("curriculum.Data.Models.RecoverLog", b =>
+                {
+                    b.HasOne("curriculum.Data.Models.User", "user")
+                        .WithMany()
+                        .HasForeignKey("userId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("user");
                 });
 
             modelBuilder.Entity("curriculum.Data.Models.SocialMedia", b =>

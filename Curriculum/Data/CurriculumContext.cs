@@ -28,9 +28,17 @@ namespace curriculum.Data
         public DbSet<SocialMedia> Linkedins { get; set; }
         public DbSet<OtherData> OtherDatas { get; set; }
         public DbSet<Value> Values { get; set; }
+        public DbSet<EmailConfig> EmailConfigs { get;set; }
+        public DbSet<RecoverLog> RecoverLogs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<EmailConfig>(entity =>
+            {
+                entity.HasKey(e => e.id);
+                entity.Property(e => e.id).ValueGeneratedNever();
+            });
+            modelBuilder.Entity<EmailConfig>().ToTable("EmailConfig");
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(user => user.id);
@@ -196,6 +204,15 @@ namespace curriculum.Data
                 entity.Property(e => e.id).ValueGeneratedNever();
             });
             modelBuilder.Entity<SocialMedia>().ToTable("SocialMedia");
+            modelBuilder.Entity<RecoverLog>(entity =>
+            {
+                entity.HasKey(e => e.id);
+                entity.Property(e => e.id).ValueGeneratedNever();
+                entity.HasOne(rl => rl.user);
+                entity.Property(log => log.active)
+                    .HasDefaultValue(true);
+            });
+            modelBuilder.Entity<RecoverLog>().ToTable("RecoverLog");
         }
     }
 }

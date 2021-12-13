@@ -8,6 +8,23 @@ namespace curriculum.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "EmailConfig",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false),
+                    username = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    host = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    port = table.Column<int>(type: "int", nullable: false),
+                    ssl = table.Column<bool>(type: "bit", nullable: false),
+                    defaultCredentials = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmailConfig", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "LanguageLevel",
                 columns: table => new
                 {
@@ -99,6 +116,27 @@ namespace curriculum.Migrations
                     table.PrimaryKey("PK_Email", x => x.id);
                     table.ForeignKey(
                         name: "FK_Email_User_userId",
+                        column: x => x.userId,
+                        principalTable: "User",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RecoverLog",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false),
+                    code = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    userId = table.Column<int>(type: "int", nullable: false),
+                    date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    active = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RecoverLog", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_RecoverLog_User_userId",
                         column: x => x.userId,
                         principalTable: "User",
                         principalColumn: "id",
@@ -450,6 +488,11 @@ namespace curriculum.Migrations
                 column: "contractId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_RecoverLog_userId",
+                table: "RecoverLog",
+                column: "userId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SocialMedia_curriculumId",
                 table: "SocialMedia",
                 column: "curriculumId");
@@ -497,6 +540,12 @@ namespace curriculum.Migrations
 
             migrationBuilder.DropTable(
                 name: "Description");
+
+            migrationBuilder.DropTable(
+                name: "EmailConfig");
+
+            migrationBuilder.DropTable(
+                name: "RecoverLog");
 
             migrationBuilder.DropTable(
                 name: "SocialMedia");

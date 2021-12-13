@@ -141,3 +141,7 @@ G:\Usuarios\Juan\Documentos\CurriculumBckDotNetCore\Curriculum\obj\Debug\net5.0\
 G:\Usuarios\Juan\Documentos\CurriculumBckDotNetCore\Curriculum\obj\Debug\net5.0\ref\curriculum.dll
 G:\Usuarios\Juan\Documentos\CurriculumBckDotNetCore\Curriculum\obj\Debug\net5.0\curriculum.pdb
 G:\Usuarios\Juan\Documentos\CurriculumBckDotNetCore\Curriculum\obj\Debug\net5.0\curriculum.genruntimeconfig.cache
+G:\Usuarios\Juan\Documentos\CurriculumBckDotNetCore\Curriculum\bin\Debug\net5.0\MailKit.dll
+G:\Usuarios\Juan\Documentos\CurriculumBckDotNetCore\Curriculum\bin\Debug\net5.0\MimeKit.dll
+G:\Usuarios\Juan\Documentos\CurriculumBckDotNetCore\Curriculum\bin\Debug\net5.0\NETCore.MailKit.dll
+G:\Usuarios\Juan\Documentos\CurriculumBckDotNetCore\Curriculum\bin\Debug\net5.0\BouncyCastle.Crypto.dll
