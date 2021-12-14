@@ -67,11 +67,18 @@ namespace curriculum.Data
         private bool AddRecoveryLog(int code, int userId)
         {
             bool result = false;
+            int id = 1;
+            RecoverLog old = _context.RecoverLogs
+                .OrderBy(log => log.id)
+                .LastOrDefault();
+            if (old != null) id = old.id;
+
             _context.RecoverLogs.Add(new RecoverLog()
             {
                 code = $"{ code }",
                 date = DateTime.Now,
-                userId = userId
+                userId = userId,
+                id = id
             });
 
             if (_context.SaveChanges() == 1) result = true;
