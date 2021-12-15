@@ -43,20 +43,29 @@ namespace curriculum.Data
                 throw new Exception(e.Message);
             }
         }
-        public bool UpdatePassword(CredentialsDto creds)
+        public bool UpdatePassword(CredentialsDto creds, string code)
         {
             try
             {
-                curriculum.Models.Credentials credenti = new curriculum.Models.Credentials(creds.username, creds.password);
+                bool codeExist = _context.RecoverLogs
+                    .Where(log => log.code == code)
+                    .FirstOrDefault()
+                    != null ? true : false;
                 bool result = false;
-                Models.Credentials credential = _context.Credentials
-                    .Where(credentials => credentials.username == creds.username)
-                    .FirstOrDefault();
-                if (credential != null)
+
+                if (codeExist)
                 {
-                    credential.password = credenti.password;
-                    _context.Credentials.Update(credential);
-                    if (_context.SaveChanges() == 1) result = true;
+                    curriculum.Models.Credentials credenti = new curriculum.Models.Credentials(creds.username, creds.password);
+                    Models.Credentials credential = _context.Credentials
+                        .Where(credentials => credentials.username == creds.username)
+                        .FirstOrDefault();
+
+                    if (credential != null)
+                    {
+                        credential.password = credenti.password;
+                        _context.Credentials.Update(credential);
+                        if (_context.SaveChanges() == 1) result = true;
+                    }
                 }
 
                 return result;

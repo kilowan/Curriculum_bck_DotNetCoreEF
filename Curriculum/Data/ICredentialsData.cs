@@ -6,7 +6,7 @@ namespace curriculum.Data
     {
         public bool CheckCredentials(string username, string password);
         public bool CheckUsername(string username);
-        public bool UpdatePassword(CredentialsDto creds);
+        public bool UpdatePassword(CredentialsDto creds, string code);
 
     }
 }

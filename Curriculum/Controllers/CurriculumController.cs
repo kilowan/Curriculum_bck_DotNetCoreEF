@@ -1,5 +1,6 @@
 ﻿using curriculum.Business;
 using curriculum.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace curriculum.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public CurriculumDetail Details(int id)
         {
             try
@@ -30,6 +32,7 @@ namespace curriculum.Controllers
         }
 
         [HttpGet("{userId}/{username}")]
+        [Authorize]
         public IList<Curriculum> GetCurriculumsByUserId(int userId, string username)
         {
             try
