@@ -16,11 +16,11 @@ namespace curriculum.Controllers
         }
 
         [HttpGet("{username}/{password}")]
-        public bool Details(string username, string password)
+        public string Login(string username, string password)
         {
             try
             {
-                return credentialsBz.CheckCredentials(username, password);
+                return credentialsBz.Login(username, password);
             }
             catch (Exception e)
             {
@@ -40,12 +40,12 @@ namespace curriculum.Controllers
                 throw new Exception(e.Message);
             }
         }
-        [HttpPut]
-        public bool UpdateCredentials(CredentialsDto credentials)
+        [HttpPut("{code}")]
+        public bool UpdateCredentials(CredentialsDto credentials, string code)
         {
             try
             {
-                return credentialsBz.UpdatePassword(credentials);
+                return credentialsBz.UpdatePassword(credentials, code);
             }
             catch (Exception e)
             {

@@ -1,5 +1,6 @@
 ﻿using curriculum.Business;
 using curriculum.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -16,6 +17,7 @@ namespace curriculum.Controllers
         }
 
         [HttpGet("{username}")]
+        [Authorize]
         public User GetUserByUsername(string username)
         {
             try
