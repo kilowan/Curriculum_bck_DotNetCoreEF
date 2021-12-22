@@ -6,6 +6,7 @@ namespace curriculum.Models
 {
     public class Training
     {
+        public int id { get; set; }
         public string name { get; set; }
         public TrainingType type { get; set; }
         public string place { get; set; }
@@ -16,6 +17,7 @@ namespace curriculum.Models
 
         public Training(Data.Models.Training training)
         {
+            id = training.id;
             name = training.name;
             type = training.type;
             place = training.place;
