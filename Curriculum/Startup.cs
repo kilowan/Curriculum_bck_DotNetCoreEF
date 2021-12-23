@@ -33,6 +33,8 @@ namespace Incidences
             services.AddTransient<IPasswordRecoveryData, PasswordRecoveryData>();
             services.AddTransient<IPasswordRecoveryBz, PasswordRecoveryBz>();
             services.AddTransient<IContentData, ContentData>();
+            services.AddTransient<ISubContentBz, SubContentBz>();
+            services.AddTransient<ISubContentData, SubContentData>();
             services.AddTransient<IContentBz, ContentBz>();
             // CONFIGURACIÓN DEL SERVICIO DE AUTENTICACIÓN JWT
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
