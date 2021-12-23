@@ -1,4 +1,5 @@
 ﻿using curriculum.Data;
+using curriculum.Models;
 using System;
 
 namespace curriculum.Business
@@ -16,6 +17,17 @@ namespace curriculum.Business
             try
             {
                 return contentData.UpdateContentById(contentId, content);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        public bool AddContent(ContentDto content)
+        {
+            try
+            {
+                return contentData.AddContent(content);
             }
             catch (Exception e)
             {
