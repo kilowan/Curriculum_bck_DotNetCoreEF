@@ -6,5 +6,6 @@ namespace curriculum.Business
     {
         public bool UpdateContentById(int contentId, string content);
         public bool AddContent(ContentDto content);
+        public bool DeleteContent(int contentId);
     }
 }
