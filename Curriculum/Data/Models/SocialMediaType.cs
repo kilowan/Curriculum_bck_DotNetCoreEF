@@ -9,5 +9,6 @@ namespace curriculum.Data.Models
     {
         Linkedin = 1,
         Infojobs = 2, 
+        GitHub = 3,
     }
 }
