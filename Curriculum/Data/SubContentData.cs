@@ -3,7 +3,7 @@ using curriculum.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using SubContent = curriculum.Data.Models.SubContent;
 
 namespace curriculum.Data
 {
@@ -38,6 +38,26 @@ namespace curriculum.Data
                 }
 
                 _context.SubContents.AddRange(subs);
+                if (_context.SaveChanges() == 1) result = true;
+
+                return result;
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        public bool DeleteSubContent(int subContentId)
+        {
+            try
+            {
+                bool result = false;
+
+                SubContent sub = _context.SubContents
+                    .Where(sub => sub.id == subContentId)
+                    .FirstOrDefault();
+                _context.SubContents.Remove(sub);
                 if (_context.SaveChanges() == 1) result = true;
 
                 return result;
