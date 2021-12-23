@@ -1,10 +1,8 @@
 ﻿using curriculum.Business;
+using curriculum.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace curriculum.Controllers
 {
@@ -25,6 +23,19 @@ namespace curriculum.Controllers
             try
             {
                 return contentBz.UpdateContentById(contentId, content);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        [HttpPost]
+        [Authorize]
+        public bool AddContent(ContentDto content)
+        {
+            try
+            {
+                return contentBz.AddContent(content);
             }
             catch (Exception e)
             {
