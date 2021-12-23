@@ -6,15 +6,15 @@ namespace curriculum.Models
     {
         public int id { get; set; }
         public string name { get; set; }
-        public IList<string> subContents { get; set; }
+        public IList<SubContent> subContents { get; set; }
         public Content(Data.Models.Content content)
         {
             id = content.id;
             name = content.name;
-            subContents = new List<string>();
+            subContents = new List<SubContent>();
             foreach (Data.Models.SubContent subContent in content.subContents)
             {
-                subContents.Add(subContent.name);
+                subContents.Add(new SubContent(subContent));
             }
         }
     }
