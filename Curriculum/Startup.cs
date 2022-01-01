@@ -37,6 +37,8 @@ namespace Incidences
             services.AddTransient<ISubContentData, SubContentData>();
             services.AddTransient<IExperienceBz, ExperienceBz>();
             services.AddTransient<IExperienceData, ExperienceData>();
+            services.AddTransient<IContractBz, ContractBz>();
+            services.AddTransient<IContractData, ContractData>();
             services.AddTransient<IContentBz, ContentBz>();
             // CONFIGURACIÓN DEL SERVICIO DE AUTENTICACIÓN JWT
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
