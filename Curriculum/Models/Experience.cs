@@ -6,6 +6,7 @@ namespace curriculum.Models
 {
     public class Experience
     {
+        public int id { get; set; }
         public string name { get; set; }
         public ExperienceType type { get; set; }
         public string place { get; set; }
@@ -14,6 +15,7 @@ namespace curriculum.Models
         public IList<Contract> contracts { get; set; }
         public Experience(Data.Models.Experience experience)
         {
+            id = experience.id;
             name = experience.name;
             type = experience.type;
             place = experience.place;
