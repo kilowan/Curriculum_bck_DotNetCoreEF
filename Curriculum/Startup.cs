@@ -44,6 +44,8 @@ namespace Incidences
             services.AddTransient<IProjectBz, ProjectBz>();
             services.AddTransient<IDescriptionData, DescriptionData>();
             services.AddTransient<IDescriptionBz, DescriptionBz>();
+            services.AddTransient<ITrainingData, TrainingData>();
+            services.AddTransient<ITrainingBz, TrainingBz>();
             // CONFIGURACIÓN DEL SERVICIO DE AUTENTICACIÓN JWT
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
