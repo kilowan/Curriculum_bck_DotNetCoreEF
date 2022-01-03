@@ -1,6 +1,5 @@
 ﻿using curriculum.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace curriculum.Data
