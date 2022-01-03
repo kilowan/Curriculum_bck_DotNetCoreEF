@@ -26,7 +26,7 @@ namespace curriculum.Data
         public DbSet<Training> Trainings { get; set; }
         public DbSet<Email> Emails { get; set; }
         public DbSet<SocialMedia> Linkedins { get; set; }
-        public DbSet<OtherData> OtherDatas { get; set; }
+        public DbSet<Models.OtherData> OtherDatas { get; set; }
         public DbSet<Value> Values { get; set; }
         public DbSet<EmailConfig> EmailConfigs { get;set; }
         public DbSet<RecoverLog> RecoverLogs { get; set; }
@@ -101,7 +101,7 @@ namespace curriculum.Data
                 .HasForeignKey(ul => ul.curriculumId);
             });
             modelBuilder.Entity<Curriculum>().ToTable("Curriculum");
-            modelBuilder.Entity<OtherData>(entity =>
+            modelBuilder.Entity<Models.OtherData>(entity =>
             {
                 entity.HasKey(cur => cur.id);
                 entity.Property(cur => cur.id).ValueGeneratedNever();
@@ -109,7 +109,7 @@ namespace curriculum.Data
                 .WithOne(sm => sm.other)
                 .HasForeignKey(sm => sm.OtherDataId);
             });
-            modelBuilder.Entity<OtherData>().ToTable("OtherData");
+            modelBuilder.Entity<Models.OtherData>().ToTable("OtherData");
             modelBuilder.Entity<Value>(entity =>
             {
                 entity.HasKey(cur => cur.id);
