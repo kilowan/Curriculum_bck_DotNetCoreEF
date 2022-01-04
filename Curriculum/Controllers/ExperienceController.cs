@@ -29,5 +29,19 @@ namespace curriculum.Controllers
                 throw new Exception(e.Message);
             }
         }
+
+        [HttpPut("{experienceId}")]
+        [Authorize]
+        public bool UpdateExperience(ExperienceDto experience, int experienceId)
+        {
+            try
+            {
+                return experienceBz.UpdateExperience(experience, experienceId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
