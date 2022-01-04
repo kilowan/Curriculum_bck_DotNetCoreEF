@@ -29,5 +29,18 @@ namespace curriculum.Controllers
                 throw new Exception(e.Message);
             }
         }
+        [HttpPut("{trainingId}")]
+        [Authorize]
+        public bool UpdateTraining(TrainingDto training, int trainingId)
+        {
+            try
+            {
+                return trainingBz.UpdateTraining(training, trainingId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

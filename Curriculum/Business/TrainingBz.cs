@@ -23,5 +23,17 @@ namespace curriculum.Business
                 throw new Exception(e.Message);
             }
         }
+
+        public bool UpdateTraining(TrainingDto training, int trainingId)
+        {
+            try
+            {
+                return trainingData.UpdateTraining(training, trainingId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
