@@ -55,6 +55,8 @@ namespace curriculum.Data
                 tr.name = !string.IsNullOrEmpty(training.name) ? training.name : null;
                 tr.place = !string.IsNullOrEmpty(training.place) ? training.place : null;
                 tr.graduationDate = training.graduationDate;
+                tr.initDatetime = training.initDateTime;
+                tr.finishDateTime = training.finishDateTime;
                 _context.Trainings.Update(tr);
                 if (_context.SaveChanges() == 1) result = true;
 
