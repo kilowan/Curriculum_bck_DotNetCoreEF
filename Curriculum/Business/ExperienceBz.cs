@@ -23,5 +23,17 @@ namespace curriculum.Business
                 throw new Exception(e.Message);
             }
         }
+
+        public bool UpdateExperience(ExperienceDto experience, int experienceId)
+        {
+            try
+            {
+                return experienceData.UpdateExperience(experience, experienceId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
