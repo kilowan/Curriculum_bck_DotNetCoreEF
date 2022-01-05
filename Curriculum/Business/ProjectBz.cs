@@ -23,5 +23,17 @@ namespace curriculum.Business
                 throw new Exception(e.Message);
             }
         }
+
+        public bool UpdateProject(ProjectDto project, int projectId)
+        {
+            try
+            {
+                return projectData.UpdateProject(project, projectId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
