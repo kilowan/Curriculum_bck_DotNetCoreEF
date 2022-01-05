@@ -52,6 +52,8 @@ namespace Incidences
             services.AddTransient<ILanguageLevelBz, LanguageLevelBz>();
             services.AddTransient<IOtherData, OtherData>();
             services.AddTransient<IOtherBz, OtherBz>();
+            services.AddTransient<IValueData, ValueData>();
+            services.AddTransient<IValueBz, ValueBz>();
             // CONFIGURACIÓN DEL SERVICIO DE AUTENTICACIÓN JWT
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
