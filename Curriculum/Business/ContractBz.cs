@@ -1,9 +1,6 @@
 ﻿using curriculum.Data;
 using curriculum.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace curriculum.Business
 {
@@ -20,6 +17,18 @@ namespace curriculum.Business
             try
             {
                 return contractData.AddContract(contract);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public bool UpdateContract(ContractDto contract, int contractId)
+        {
+            try
+            {
+                return contractData.UpdateContract(contract, contractId);
             }
             catch (Exception e)
             {
