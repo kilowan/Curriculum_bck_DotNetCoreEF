@@ -42,5 +42,18 @@ namespace curriculum.Controllers
                 throw new Exception(e.Message);
             }
         }
+        [HttpDelete("{descriptionId}")]
+        [Authorize]
+        public bool DeleteDescription(int descriptionId)
+        {
+            try
+            {
+                return descriptionBz.DeleteDescription(descriptionId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

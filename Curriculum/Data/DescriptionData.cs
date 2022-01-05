@@ -60,5 +60,24 @@ namespace curriculum.Data
                 throw new Exception(e.Message);
             }
         }
+        public bool DeleteDescription(int descriptionId)
+        {
+            try
+            {
+                bool result = false;
+                Models.Description desc = _context.Descriptions
+                    .Where(desc => desc.id == descriptionId)
+                    .FirstOrDefault();
+                _context.Descriptions.Remove(desc);
+                if (_context.SaveChanges() == 1) result = true;
+
+                return result;
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

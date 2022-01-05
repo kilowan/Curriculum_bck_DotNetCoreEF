@@ -23,12 +23,23 @@ namespace curriculum.Business
                 throw new Exception(e.Message);
             }
         }
-
         public bool UpdateDescription(DescriptionDto description, int descriptionId)
         {
             try
             {
                 return descriptionData.UpdateDescription(description, descriptionId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public bool DeleteDescription(int descriptionId)
+        {
+            try
+            {
+                return descriptionData.DeleteDescription(descriptionId);
             }
             catch (Exception e)
             {
