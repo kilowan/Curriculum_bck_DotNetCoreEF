@@ -26,5 +26,17 @@ namespace curriculum.Business
                 throw new Exception(e.Message);
             }
         }
+
+        public bool UpdateLanguage(LanguageDto language, int languageId)
+        {
+            try
+            {
+                return languageData.UpdateLanguage(language, languageId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
