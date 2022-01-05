@@ -38,5 +38,25 @@ namespace curriculum.Data
                 throw new Exception(e.Message);
             }
         }
+        public bool UpdateValue(ValueDto value, int valueId)
+        {
+            try
+            {
+                bool result = false;
+                Models.Value val = _context.Values
+                    .Where(val => val.id == valueId)
+                    .FirstOrDefault();
+                val.name = !string.IsNullOrEmpty(value.name) ? value.name : null;
+                _context.Values.Update(val);
+                if (_context.SaveChanges() == 1) result = true;
+
+                return result;
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

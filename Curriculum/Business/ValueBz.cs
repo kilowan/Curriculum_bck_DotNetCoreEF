@@ -23,5 +23,17 @@ namespace curriculum.Business
                 throw new Exception(e.Message);
             }
         }
+
+        public bool UpdateValue(ValueDto value, int valueId)
+        {
+            try
+            {
+                return valueData.UpdateValue(value, valueId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
