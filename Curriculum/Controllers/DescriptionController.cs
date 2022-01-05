@@ -29,5 +29,18 @@ namespace curriculum.Controllers
                 throw new Exception(e.Message);
             }
         }
+        [HttpPut("{descriptionId}")]
+        [Authorize]
+        public bool UpdateDescription(DescriptionDto description, int descriptionId)
+        {
+            try
+            {
+                return descriptionBz.UpdateDescription(description, descriptionId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

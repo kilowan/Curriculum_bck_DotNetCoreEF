@@ -12,7 +12,7 @@ namespace curriculum.Data
             _context = context;
         }
 
-        public bool AddDescription(DescriptionDto desciption)
+        public bool AddDescription(DescriptionDto description)
         {
             try
             {
@@ -25,10 +25,31 @@ namespace curriculum.Data
                 _context.Descriptions.Add(new Models.Description()
                 {
                     id = lastId,
-                    proyectId = desciption.projectId,
-                    name = desciption.name
+                    proyectId = description.projectId,
+                    name = description.name
                 });
 
+                if (_context.SaveChanges() == 1) result = true;
+
+                return result;
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public bool UpdateDescription(DescriptionDto description, int descriptionId)
+        {
+            try
+            {
+                bool result = false;
+                Models.Description desc = _context.Descriptions
+                    .Where(desc => desc.id == descriptionId)
+                    .FirstOrDefault();
+                desc.name = description.name;
+                _context.Descriptions.Update(desc);
                 if (_context.SaveChanges() == 1) result = true;
 
                 return result;

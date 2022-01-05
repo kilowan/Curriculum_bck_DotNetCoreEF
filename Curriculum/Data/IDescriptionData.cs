@@ -4,6 +4,7 @@ namespace curriculum.Data
 {
     public interface IDescriptionData
     {
-        public bool AddDescription(DescriptionDto desciption);
+        public bool AddDescription(DescriptionDto description);
+        public bool UpdateDescription(DescriptionDto description, int descriptionId);
     }
 }
