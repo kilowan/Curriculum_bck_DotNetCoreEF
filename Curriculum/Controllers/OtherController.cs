@@ -29,5 +29,18 @@ namespace curriculum.Controllers
                 throw new Exception(e.Message);
             }
         }
+        [HttpPut("{otherDataId}")]
+        [Authorize]
+        public bool UpdateOtherData(OtherDataDto otherData, int otherDataId)
+        {
+            try
+            {
+                return otherBz.UpdateOtherData(otherData, otherDataId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

@@ -38,5 +38,25 @@ namespace curriculum.Data
                 throw new Exception(e.Message);
             }
         }
+        public bool UpdateOtherData(OtherDataDto otherData, int otherDataId)
+        {
+            try
+            {
+                bool result = false;
+                Models.OtherData other = _context.OtherDatas
+                    .Where(od => od.id == otherDataId)
+                    .FirstOrDefault();
+                other.name = !string.IsNullOrEmpty(otherData.name)? otherData.name : null;
+                _context.OtherDatas.Update(other);
+                if (_context.SaveChanges() == 1) result = true;
+
+                return result;
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
