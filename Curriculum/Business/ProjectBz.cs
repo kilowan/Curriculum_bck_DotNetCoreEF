@@ -35,5 +35,16 @@ namespace curriculum.Business
                 throw new Exception(e.Message);
             }
         }
+        public bool DeleteProject(int projectId)
+        {
+            try
+            {
+                return projectData.DeleteProject(projectId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

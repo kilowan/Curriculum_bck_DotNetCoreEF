@@ -43,5 +43,19 @@ namespace curriculum.Controllers
                 throw new Exception(e.Message);
             }
         }
+
+        [HttpDelete("{projectId}")]
+        [Authorize]
+        public bool DeleteProject(int projectId)
+        {
+            try
+            {
+                return projectBz.DeleteProject(projectId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

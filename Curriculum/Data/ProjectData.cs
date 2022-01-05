@@ -58,5 +58,24 @@ namespace curriculum.Data
                 throw new Exception(e.Message);
             }
         }
+        public bool DeleteProject(int projectId)
+        {
+            try
+            {
+                bool result = false;
+                Models.Project pr = _context.Projects
+                    .Where(pr => pr.id == projectId)
+                    .FirstOrDefault();
+                _context.Projects.Remove(pr);
+                if (_context.SaveChanges() == 1) result = true;
+
+                return result;
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
