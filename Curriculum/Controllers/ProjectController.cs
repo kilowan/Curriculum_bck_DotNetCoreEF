@@ -29,5 +29,19 @@ namespace curriculum.Controllers
                 throw new Exception(e.Message);
             }
         }
+
+        [HttpPut("{projectId}")]
+        [Authorize]
+        public bool UpdateProject(ProjectDto project, int projectId)
+        {
+            try
+            {
+                return projectBz.UpdateProject(project, projectId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

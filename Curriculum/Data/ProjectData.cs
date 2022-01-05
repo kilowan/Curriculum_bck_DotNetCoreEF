@@ -38,5 +38,25 @@ namespace curriculum.Data
                 throw new Exception(e.Message);
             }
         }
+        public bool UpdateProject(ProjectDto project, int projectId)
+        {
+            try
+            {
+                bool result = false;
+                Models.Project pr = _context.Projects
+                    .Where(pr => pr.id == projectId)
+                    .FirstOrDefault();
+                pr.name = project.name;
+                _context.Projects.Update(pr);
+                if (_context.SaveChanges() == 1) result = true;
+
+                return result;
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
