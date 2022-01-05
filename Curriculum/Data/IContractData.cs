@@ -9,5 +9,6 @@ namespace curriculum.Data
     public interface IContractData
     {
         public bool AddContract(ContractDto contract);
+        public bool UpdateContract(ContractDto contract, int contractId);
     }
 }

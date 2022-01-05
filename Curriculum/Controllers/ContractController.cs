@@ -29,5 +29,18 @@ namespace curriculum.Controllers
                 throw new Exception(e.Message);
             }
         }
+        [HttpPut("{contractId}")]
+        [Authorize]
+        public bool UpdateContract(ContractDto contract, int contractId)
+        {
+            try
+            {
+                return contractBz.UpdateContract(contract, contractId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
