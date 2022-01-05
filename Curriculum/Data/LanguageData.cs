@@ -51,5 +51,26 @@ namespace curriculum.Data
                 throw new Exception(e.Message);
             }
         }
+        public bool UpdateLanguage(LanguageDto language, int languageId)
+        {
+            try
+            {
+                bool result = false;
+                Models.Language lg = _context.Languages
+                    .Where(lg => lg.id == languageId)
+                    .FirstOrDefault();
+                lg.name = !string.IsNullOrEmpty(language.name) ? language.name : null;
+                if(language.levelId != 0) lg.levelId =  language.levelId;
+                _context.Languages.Update(lg);
+                if (_context.SaveChanges() == 1) result = true;
+
+                return result;
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

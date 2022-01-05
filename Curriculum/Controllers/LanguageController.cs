@@ -29,5 +29,19 @@ namespace curriculum.Controllers
                 throw new Exception(e.Message);
             }
         }
+
+        [HttpPut("{languageId}")]
+        [Authorize]
+        public bool AddLanguage(LanguageDto language, int languageId)
+        {
+            try
+            {
+                return languageBz.UpdateLanguage(language, languageId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
