@@ -35,5 +35,18 @@ namespace curriculum.Business
                 throw new Exception(e.Message);
             }
         }
+
+        public bool DeleteExperience(int experienceId)
+        {
+            try
+            {
+                return experienceData.DeleteExperience(experienceId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
     }
 }

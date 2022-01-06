@@ -43,5 +43,19 @@ namespace curriculum.Controllers
                 throw new Exception(e.Message);
             }
         }
+
+        [HttpDelete("{experienceId}")]
+        [Authorize]
+        public bool DeleteExperience(int experienceId)
+        {
+            try
+            {
+                return experienceBz.DeleteExperience(experienceId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

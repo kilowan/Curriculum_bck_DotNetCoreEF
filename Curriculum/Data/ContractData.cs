@@ -39,6 +39,7 @@ namespace curriculum.Data
                 throw new Exception(e.Message);
             }
         }
+
         public bool UpdateContract(ContractDto contract, int contractId)
         {
             try
@@ -49,6 +50,27 @@ namespace curriculum.Data
                     .FirstOrDefault();
                 cont.name = contract.contractName;
                 _context.Contracts.Update(cont);
+
+                if (_context.SaveChanges() == 1) result = true;
+
+                return result;
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public bool DeleteContract(int contractId)
+        {
+            try
+            {
+                bool result = false;
+                Models.Contract cont = _context.Contracts
+                    .Where(exp => exp.id == contractId)
+                    .FirstOrDefault();
+                _context.Contracts.Remove(cont);
 
                 if (_context.SaveChanges() == 1) result = true;
 

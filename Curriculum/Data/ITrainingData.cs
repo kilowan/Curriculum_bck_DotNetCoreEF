@@ -6,5 +6,6 @@ namespace curriculum.Data
     {
         public bool AddTraining(TrainingDto training);
         public bool UpdateTraining(TrainingDto training, int trainingId);
+        public bool DeleteTraining(int trainingId);
     }
 }

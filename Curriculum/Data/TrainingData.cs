@@ -44,6 +44,7 @@ namespace curriculum.Data
                 throw new Exception(e.Message);
             }
         }
+
         public bool UpdateTraining(TrainingDto training, int trainingId)
         {
             try
@@ -58,6 +59,26 @@ namespace curriculum.Data
                 tr.initDatetime = training.initDateTime;
                 tr.finishDateTime = training.finishDateTime;
                 _context.Trainings.Update(tr);
+                if (_context.SaveChanges() == 1) result = true;
+
+                return result;
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public bool DeleteTraining(int trainingId)
+        {
+            try
+            {
+                bool result = false;
+                Models.Training tr = _context.Trainings
+                    .Where(tr => tr.id == trainingId)
+                    .FirstOrDefault();
+                _context.Trainings.Remove(tr);
                 if (_context.SaveChanges() == 1) result = true;
 
                 return result;
