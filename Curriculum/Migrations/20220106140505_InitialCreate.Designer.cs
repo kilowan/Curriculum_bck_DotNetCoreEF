@@ -10,7 +10,7 @@ using curriculum.Data;
 namespace curriculum.Migrations
 {
     [DbContext(typeof(CurriculumContext))]
-    [Migration("20211213162520_InitialCreate")]
+    [Migration("20220106140505_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -212,15 +212,10 @@ namespace curriculum.Migrations
                     b.Property<int>("id")
                         .HasColumnType("int");
 
-                    b.Property<int>("levelId")
-                        .HasColumnType("int");
-
                     b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
-
-                    b.HasIndex("levelId");
 
                     b.ToTable("Language");
                 });
@@ -418,11 +413,16 @@ namespace curriculum.Migrations
                     b.Property<int>("languageId")
                         .HasColumnType("int");
 
+                    b.Property<int>("levelId")
+                        .HasColumnType("int");
+
                     b.HasKey("id");
 
                     b.HasIndex("curriculumId");
 
                     b.HasIndex("languageId");
+
+                    b.HasIndex("levelId");
 
                     b.ToTable("UserLanguage");
                 });
@@ -558,17 +558,6 @@ namespace curriculum.Migrations
                     b.Navigation("curriculum");
                 });
 
-            modelBuilder.Entity("curriculum.Data.Models.Language", b =>
-                {
-                    b.HasOne("curriculum.Data.Models.LanguageLevel", "level")
-                        .WithMany()
-                        .HasForeignKey("levelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("level");
-                });
-
             modelBuilder.Entity("curriculum.Data.Models.OtherData", b =>
                 {
                     b.HasOne("curriculum.Data.Models.Curriculum", "curriculum")
@@ -649,9 +638,17 @@ namespace curriculum.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("curriculum.Data.Models.LanguageLevel", "level")
+                        .WithMany()
+                        .HasForeignKey("levelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("curriculum");
 
                     b.Navigation("language");
+
+                    b.Navigation("level");
                 });
 
             modelBuilder.Entity("curriculum.Data.Models.UserNumber", b =>

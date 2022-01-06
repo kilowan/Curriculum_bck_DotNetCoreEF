@@ -58,5 +58,25 @@ namespace curriculum.Data
                 throw new Exception(e.Message);
             }
         }
+
+        public bool DeleteValue(int valueId)
+        {
+            try
+            {
+                bool result = false;
+                Models.Value val = _context.Values
+                    .Where(val => val.id == valueId)
+                    .FirstOrDefault();
+                _context.Values.Remove(val);
+                if (_context.SaveChanges() == 1) result = true;
+
+                return result;
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

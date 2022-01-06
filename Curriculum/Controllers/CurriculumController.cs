@@ -44,5 +44,19 @@ namespace curriculum.Controllers
                 throw new Exception(e.Message);
             }
         }
+
+        [HttpDelete("{curriculumId}")]
+        [Authorize]
+        public bool GetCurriculumsByUserId(int curriculumId)
+        {
+            try
+            {
+                return curriculumBz.DeleteCurriculum(curriculumId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

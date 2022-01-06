@@ -6,5 +6,6 @@ namespace curriculum.Data
     {
         public bool AddOtherData(OtherDataDto otherData);
         public bool UpdateOtherData(OtherDataDto otherData, int otherDataId);
+        public bool DeleteOtherData(int otherDataId);
     }
 }

@@ -29,6 +29,7 @@ namespace curriculum.Controllers
                 throw new Exception(e.Message);
             }
         }
+
         [HttpPut("{otherDataId}")]
         [Authorize]
         public bool UpdateOtherData(OtherDataDto otherData, int otherDataId)
@@ -36,6 +37,20 @@ namespace curriculum.Controllers
             try
             {
                 return otherBz.UpdateOtherData(otherData, otherDataId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        [HttpPut("{otherDataId}")]
+        [Authorize]
+        public bool DeleteOtherData(int otherDataId)
+        {
+            try
+            {
+                return otherBz.DeleteOtherData(otherDataId);
             }
             catch (Exception e)
             {

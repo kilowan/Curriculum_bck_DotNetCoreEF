@@ -49,8 +49,9 @@ namespace curriculum.Data
                     .ThenInclude(sm => sm.contents)
                     .ThenInclude(con => con.subContents)
                     .Include(curr => curr.userLanguageList)
+                    .ThenInclude(ul => ul.level)
+                    .Include(curr => curr.userLanguageList)
                     .ThenInclude(langs => langs.language)
-                    .ThenInclude(lang => lang.level)
                     .Include(curr => curr.experience)
                     .ThenInclude(exp => exp.contracts)
                     .ThenInclude(contr => contr.proyects)
@@ -77,6 +78,26 @@ namespace curriculum.Data
                     .ThenInclude(user => user.credentials)
                     .Where(curr => curr.userId == userId && curr.user.credentials.username == username)
                     .ToList();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public bool DeleteCurriculum(int curriculumId)
+        {
+            try
+            {
+                bool result = false;
+                Models.Curriculum curr = _context.Curriculums
+                    .Where(curr => curr.id == curriculumId)
+                    .FirstOrDefault();
+                _context.Curriculums.Remove(curr);
+                if (_context.SaveChanges() == 1) result = true;
+
+                return result;
+
             }
             catch (Exception e)
             {

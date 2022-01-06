@@ -121,13 +121,13 @@ namespace curriculum.Data
                 entity.HasKey(e => e.id);
                 entity.Property(e => e.id).ValueGeneratedNever();
                 entity.HasOne(ul => ul.language);
+                entity.HasOne(ul => ul.level);
             });
             modelBuilder.Entity<UserLanguage>().ToTable("UserLanguage");
             modelBuilder.Entity<Language>(entity =>
             {
                 entity.HasKey(e => e.id);
                 entity.Property(e => e.id).ValueGeneratedNever();
-                entity.HasOne(lang => lang.level);
             });
             modelBuilder.Entity<Language>().ToTable("Language");
             modelBuilder.Entity<LanguageLevel>(entity =>
