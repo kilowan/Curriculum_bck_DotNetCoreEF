@@ -8,5 +8,6 @@ namespace curriculum.Data
         public Curriculum GetCurriculumById(int userId, int curriculumId);
         public Curriculum GetCurriculumById(int curriculumId);
         public IList<Curriculum> GetCurriculumsByUserId(int userId, string username);
+        public bool DeleteCurriculum(int curriculumId);
     }
 }

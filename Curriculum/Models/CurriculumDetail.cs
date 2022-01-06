@@ -13,7 +13,7 @@ namespace curriculum.Models
         public IList<Experience> experience { get; set; }
         public IList<Training> otherTraining { get; set; }
         public IList<Training> academicTraining { get; set; }
-        public IList<Language> languageList { get; set; }
+        public IList<UserLanguage> languageList { get; set; }
         public IList<SocialMedia> socialMedia { get; set; }
         public IList<OtherData> otherData { get; set; }
 
@@ -49,10 +49,10 @@ namespace curriculum.Models
                 otherTraining.Add(new Training(train));
             }
 
-            languageList = new List<Language>();
+            languageList = new List<UserLanguage>();
             foreach (Data.Models.UserLanguage userLang in curriculum.userLanguageList)
             {
-                languageList.Add(new Language(userLang.language));
+                languageList.Add(new UserLanguage(userLang));
             }
 
             socialMedia = new List<SocialMedia>();

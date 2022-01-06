@@ -6,5 +6,6 @@ namespace curriculum.Business
     {
         public bool AddValue(ValueDto value);
         public bool UpdateValue(ValueDto value, int valueId);
+        public bool DeleteValue(int valueId);
     }
 }

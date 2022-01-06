@@ -25,6 +25,18 @@ namespace curriculum.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Language",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Language", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "LanguageLevel",
                 columns: table => new
                 {
@@ -61,25 +73,6 @@ namespace curriculum.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_User", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Language",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false),
-                    levelId = table.Column<int>(type: "int", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Language", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_Language_LanguageLevel_levelId",
-                        column: x => x.levelId,
-                        principalTable: "LanguageLevel",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -293,7 +286,8 @@ namespace curriculum.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false),
                     languageId = table.Column<int>(type: "int", nullable: false),
-                    curriculumId = table.Column<int>(type: "int", nullable: false)
+                    curriculumId = table.Column<int>(type: "int", nullable: false),
+                    levelId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -308,6 +302,12 @@ namespace curriculum.Migrations
                         name: "FK_UserLanguage_Language_languageId",
                         column: x => x.languageId,
                         principalTable: "Language",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserLanguage_LanguageLevel_levelId",
+                        column: x => x.levelId,
+                        principalTable: "LanguageLevel",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -473,11 +473,6 @@ namespace curriculum.Migrations
                 column: "curriculumId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Language_levelId",
-                table: "Language",
-                column: "levelId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_OtherData_curriculumId",
                 table: "OtherData",
                 column: "curriculumId");
@@ -516,6 +511,11 @@ namespace curriculum.Migrations
                 name: "IX_UserLanguage_languageId",
                 table: "UserLanguage",
                 column: "languageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserLanguage_levelId",
+                table: "UserLanguage",
+                column: "levelId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserNumber_phoneId",
@@ -572,6 +572,9 @@ namespace curriculum.Migrations
                 name: "Language");
 
             migrationBuilder.DropTable(
+                name: "LanguageLevel");
+
+            migrationBuilder.DropTable(
                 name: "OtherData");
 
             migrationBuilder.DropTable(
@@ -579,9 +582,6 @@ namespace curriculum.Migrations
 
             migrationBuilder.DropTable(
                 name: "Training");
-
-            migrationBuilder.DropTable(
-                name: "LanguageLevel");
 
             migrationBuilder.DropTable(
                 name: "Experience");

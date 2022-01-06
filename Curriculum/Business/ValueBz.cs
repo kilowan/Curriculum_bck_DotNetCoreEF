@@ -35,5 +35,17 @@ namespace curriculum.Business
                 throw new Exception(e.Message);
             }
         }
+
+        public bool DeleteValue(int valueId)
+        {
+            try
+            {
+                return valueData.DeleteValue(valueId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

@@ -29,6 +29,21 @@ namespace curriculum.Controllers
                 throw new Exception(e.Message);
             }
         }
+
+        [HttpDelete("{valueId}")]
+        [Authorize]
+        public bool UpdateValue(int valueId)
+        {
+            try
+            {
+                return valueBz.DeleteValue(valueId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
         [HttpPut("{valueId}")]
         [Authorize]
         public bool UpdateValue(ValueDto value, int valueId)
