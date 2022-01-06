@@ -29,6 +29,7 @@ namespace curriculum.Controllers
                 throw new Exception(e.Message);
             }
         }
+
         [HttpPut("{contractId}")]
         [Authorize]
         public bool UpdateContract(ContractDto contract, int contractId)
@@ -36,6 +37,20 @@ namespace curriculum.Controllers
             try
             {
                 return contractBz.UpdateContract(contract, contractId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        [HttpDelete("{contractId}")]
+        [Authorize]
+        public bool DeleteContract(int contractId)
+        {
+            try
+            {
+                return contractBz.DeleteContract(contractId);
             }
             catch (Exception e)
             {

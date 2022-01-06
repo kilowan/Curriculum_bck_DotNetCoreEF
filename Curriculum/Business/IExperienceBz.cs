@@ -6,5 +6,6 @@ namespace curriculum.Business
     {
         public bool AddExperience(ExperienceDto experience);
         public bool UpdateExperience(ExperienceDto experience, int experienceId);
+        public bool DeleteExperience(int experienceId);
     }
 }

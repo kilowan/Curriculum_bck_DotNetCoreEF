@@ -29,6 +29,7 @@ namespace curriculum.Controllers
                 throw new Exception(e.Message);
             }
         }
+
         [HttpPut("{trainingId}")]
         [Authorize]
         public bool UpdateTraining(TrainingDto training, int trainingId)
@@ -36,6 +37,20 @@ namespace curriculum.Controllers
             try
             {
                 return trainingBz.UpdateTraining(training, trainingId);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        [HttpDelete("{trainingId}")]
+        [Authorize]
+        public bool DeleteTraining(int trainingId)
+        {
+            try
+            {
+                return trainingBz.DeleteTraining(trainingId);
             }
             catch (Exception e)
             {

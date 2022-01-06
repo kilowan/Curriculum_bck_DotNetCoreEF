@@ -29,6 +29,7 @@ namespace curriculum.Controllers
                 throw new Exception(e.Message);
             }
         }
+
         [HttpPut("{descriptionId}")]
         [Authorize]
         public bool UpdateDescription(DescriptionDto description, int descriptionId)
@@ -42,6 +43,7 @@ namespace curriculum.Controllers
                 throw new Exception(e.Message);
             }
         }
+
         [HttpDelete("{descriptionId}")]
         [Authorize]
         public bool DeleteDescription(int descriptionId)

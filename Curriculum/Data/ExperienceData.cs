@@ -66,5 +66,26 @@ namespace curriculum.Data
                 throw new Exception(e.Message);
             }
         }
+
+        public bool DeleteExperience(int experienceId)
+        {
+            try
+            {
+                bool result = false;
+                Models.Experience exp = _context.Experiences
+                    .Where(exp => exp.id == experienceId)
+                    .FirstOrDefault();
+                _context.Experiences.Remove(exp);
+
+                if (_context.SaveChanges() == 1) result = true;
+
+                return result;
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
