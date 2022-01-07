@@ -320,14 +320,29 @@ namespace curriculum.Migrations
                     b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("type")
+                    b.Property<int>("typeId")
                         .HasColumnType("int");
 
                     b.HasKey("id");
 
                     b.HasIndex("curriculumId");
 
+                    b.HasIndex("typeId");
+
                     b.ToTable("SocialMedia");
+                });
+
+            modelBuilder.Entity("curriculum.Data.Models.SocialMediaType", b =>
+                {
+                    b.Property<int>("id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("SocialMediaType");
                 });
 
             modelBuilder.Entity("curriculum.Data.Models.SubContent", b =>
@@ -597,7 +612,15 @@ namespace curriculum.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("curriculum.Data.Models.SocialMediaType", "type")
+                        .WithMany()
+                        .HasForeignKey("typeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("curriculum");
+
+                    b.Navigation("type");
                 });
 
             modelBuilder.Entity("curriculum.Data.Models.SubContent", b =>

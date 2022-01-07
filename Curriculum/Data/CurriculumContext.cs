@@ -25,11 +25,12 @@ namespace curriculum.Data
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<Training> Trainings { get; set; }
         public DbSet<Email> Emails { get; set; }
-        public DbSet<SocialMedia> Linkedins { get; set; }
         public DbSet<Models.OtherData> OtherDatas { get; set; }
         public DbSet<Value> Values { get; set; }
         public DbSet<EmailConfig> EmailConfigs { get;set; }
         public DbSet<RecoverLog> RecoverLogs { get; set; }
+        public DbSet<SocialMedia> SocialMedias { get; set; }
+        public DbSet<SocialMediaType> SocialMediaType { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -202,8 +203,15 @@ namespace curriculum.Data
             {
                 entity.HasKey(e => e.id);
                 entity.Property(e => e.id).ValueGeneratedNever();
+                entity.HasOne(e => e.type);
             });
             modelBuilder.Entity<SocialMedia>().ToTable("SocialMedia");
+            modelBuilder.Entity<SocialMediaType>(entity =>
+            {
+                entity.HasKey(e => e.id);
+                entity.Property(e => e.id).ValueGeneratedNever();
+            });
+            modelBuilder.Entity<SocialMediaType>().ToTable("SocialMediaType");
             modelBuilder.Entity<RecoverLog>(entity =>
             {
                 entity.HasKey(e => e.id);

@@ -3,7 +3,6 @@ using curriculum.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 namespace curriculum.Controllers
 {
     [Route("api/SubContent")]
@@ -29,6 +28,7 @@ namespace curriculum.Controllers
                 throw new Exception(e.Message);
             }
         }
+
         [HttpDelete("{subContentId}")]
         [Authorize]
         public bool DeleteSubContent(int subContentId)

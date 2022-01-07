@@ -54,6 +54,10 @@ namespace Incidences
             services.AddTransient<IOtherBz, OtherBz>();
             services.AddTransient<IValueData, ValueData>();
             services.AddTransient<IValueBz, ValueBz>();
+            services.AddTransient<ISocialMediaData, SocialMediaData>();
+            services.AddTransient<ISocialMediaBz, SocialMediaBz>();
+            services.AddTransient<ISocialMediaTypeData, SocialMediaTypeData>();
+            services.AddTransient<ISocialMediaTypeBz, SocialMediaTypeBz>();
             // CONFIGURACIÓN DEL SERVICIO DE AUTENTICACIÓN JWT
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
