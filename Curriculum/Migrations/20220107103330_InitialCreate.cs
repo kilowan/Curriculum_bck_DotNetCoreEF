@@ -62,6 +62,18 @@ namespace curriculum.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "SocialMediaType",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SocialMediaType", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "User",
                 columns: table => new
                 {
@@ -242,7 +254,7 @@ namespace curriculum.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false),
                     curriculumId = table.Column<int>(type: "int", nullable: false),
-                    type = table.Column<int>(type: "int", nullable: false),
+                    typeId = table.Column<int>(type: "int", nullable: false),
                     name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -252,6 +264,12 @@ namespace curriculum.Migrations
                         name: "FK_SocialMedia_Curriculum_curriculumId",
                         column: x => x.curriculumId,
                         principalTable: "Curriculum",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SocialMedia_SocialMediaType_typeId",
+                        column: x => x.typeId,
+                        principalTable: "SocialMediaType",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -493,6 +511,11 @@ namespace curriculum.Migrations
                 column: "curriculumId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_SocialMedia_typeId",
+                table: "SocialMedia",
+                column: "typeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SubContent_contentId",
                 table: "SubContent",
                 column: "contentId");
@@ -564,6 +587,9 @@ namespace curriculum.Migrations
 
             migrationBuilder.DropTable(
                 name: "Project");
+
+            migrationBuilder.DropTable(
+                name: "SocialMediaType");
 
             migrationBuilder.DropTable(
                 name: "Content");

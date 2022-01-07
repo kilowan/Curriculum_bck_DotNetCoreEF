@@ -1,5 +1,4 @@
-﻿using curriculum.Data.Models;
-using curriculum.Models;
+﻿using curriculum.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

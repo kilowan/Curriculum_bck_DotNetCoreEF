@@ -1,4 +1,3 @@
-G:\Usuarios\Juan\Documentos\CurriculumBckDotNetCore\Curriculum\obj\Debug\net5.0\curriculum.csproj.AssemblyReference.cache
 G:\Usuarios\Juan\Documentos\CurriculumBckDotNetCore\Curriculum\obj\Debug\net5.0\curriculum.GeneratedMSBuildEditorConfig.editorconfig
 G:\Usuarios\Juan\Documentos\CurriculumBckDotNetCore\Curriculum\obj\Debug\net5.0\curriculum.AssemblyInfoInputs.cache
 G:\Usuarios\Juan\Documentos\CurriculumBckDotNetCore\Curriculum\obj\Debug\net5.0\curriculum.AssemblyInfo.cs

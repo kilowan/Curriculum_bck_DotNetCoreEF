@@ -1,9 +1,6 @@
 ﻿namespace curriculum.Data.Models
 {
-    public enum SocialMediaType
+    public class SocialMediaType : basebaseClass
     {
-        Linkedin = 1,
-        Infojobs = 2, 
-        GitHub = 3,
     }
 }

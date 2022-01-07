@@ -45,6 +45,7 @@ namespace curriculum.Data
                     .Include(curr => curr.phoneNumber)
                     .Include(curr => curr.user)
                     .Include(curr => curr.socialMedia)
+                    .ThenInclude(sm => sm.type)
                     .Include(curr => curr.training)
                     .ThenInclude(sm => sm.contents)
                     .ThenInclude(con => con.subContents)
