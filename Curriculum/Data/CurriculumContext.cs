@@ -144,6 +144,8 @@ namespace curriculum.Data
                 entity.HasMany(exp => exp.contracts)
                 .WithOne(con => con.experience)
                 .HasForeignKey(con => con.experienceId);
+                entity.Property(e => e.finishDate)
+                .HasDefaultValue(null);
             });
             modelBuilder.Entity<Experience>().ToTable("Experience");
             modelBuilder.Entity<Contract>(entity =>

@@ -145,3 +145,4 @@ G:\Usuarios\Juan\Documentos\CurriculumBckDotNetCore\Curriculum\bin\Debug\net5.0\
 G:\Usuarios\Juan\Documentos\CurriculumBckDotNetCore\Curriculum\bin\Debug\net5.0\NETCore.MailKit.dll
 G:\Usuarios\Juan\Documentos\CurriculumBckDotNetCore\Curriculum\bin\Debug\net5.0\BouncyCastle.Crypto.dll
 G:\Usuarios\Juan\Documentos\CurriculumBckDotNetCore\Curriculum\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+G:\Usuarios\Juan\Documentos\CurriculumBckDotNetCore\Curriculum\obj\Debug\net5.0\curriculum.csproj.AssemblyReference.cache

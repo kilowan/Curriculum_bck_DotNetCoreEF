@@ -10,7 +10,7 @@ namespace curriculum.Data.Models
         public ExperienceType type { get; set; }
         public string place { get; set; }
         public DateTime initDate { get; set; }
-        public DateTime finishDate { get; set; }
+        public DateTime? finishDate { get; set; }
 
         [InverseProperty("experience")]
         public IList<Contract> contracts { get; set; }

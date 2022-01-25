@@ -215,7 +215,7 @@ namespace curriculum.Migrations
                     type = table.Column<int>(type: "int", nullable: false),
                     place = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     initDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    finishDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    finishDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>

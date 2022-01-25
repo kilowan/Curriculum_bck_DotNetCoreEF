@@ -22,15 +22,17 @@ namespace curriculum.Data
                     .Select(exp => exp.id)
                     .LastOrDefault() + 1;
 
-                _context.Experiences.Add(new Models.Experience()
+                Models.Experience exp = new Models.Experience()
                 {
                     initDate = (DateTime)experience.initDate,
-                    finishDate = (DateTime)experience.finishDate,
                     curriculumId = experience.curriculumId,
                     id = lastId,
                     place = experience.place,
                     name = experience.name
-                });
+                };
+
+                if (experience.finishDate != null) exp.finishDate = (DateTime)experience.finishDate;
+                _context.Experiences.Add(exp);
 
                 if (_context.SaveChanges() == 1) result = true;
 

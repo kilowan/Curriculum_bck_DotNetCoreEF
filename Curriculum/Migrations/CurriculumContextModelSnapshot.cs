@@ -183,7 +183,7 @@ namespace curriculum.Migrations
                     b.Property<int>("curriculumId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("finishDate")
+                    b.Property<DateTime?>("finishDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("initDate")

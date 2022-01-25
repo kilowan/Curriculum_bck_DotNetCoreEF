@@ -10,7 +10,7 @@ using curriculum.Data;
 namespace curriculum.Migrations
 {
     [DbContext(typeof(CurriculumContext))]
-    [Migration("20220107103330_InitialCreate")]
+    [Migration("20220125091430_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -185,7 +185,7 @@ namespace curriculum.Migrations
                     b.Property<int>("curriculumId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("finishDate")
+                    b.Property<DateTime?>("finishDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("initDate")
