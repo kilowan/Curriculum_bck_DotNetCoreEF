@@ -29,7 +29,7 @@ namespace curriculum.Models
         }*/
         private static string GetSHA1(string str)
         {
-            SHA1 sha1 = SHA1Managed.Create();
+            SHA1 sha1 = SHA1.Create();
             ASCIIEncoding encoding = new();
             StringBuilder sb = new();
             byte[] stream = sha1.ComputeHash(encoding.GetBytes(str));
